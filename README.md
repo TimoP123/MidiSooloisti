@@ -1,3 +1,3 @@
 # MidiSooloisti
 
-[Projektin kuvaus][./dokumentaatio/aiheenKuvausJaRakenne.md]
+[Projektin kuvaus](./dokumentaatio/aiheenKuvausJaRakenne.md)
