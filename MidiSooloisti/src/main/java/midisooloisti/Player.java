@@ -1,0 +1,91 @@
+package midisooloisti;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Receiver;
+import javax.sound.midi.ShortMessage;
+
+public class Player {
+
+    private String deviceName;
+    private MidiDevice outputDevice;
+    private Receiver receiver;
+    private ArrayList<MidiNote> notes;
+    private int tick;
+    private int ticksLeft;
+    private int index;
+
+    public Player() {
+        this.deviceName = "Gervill";    // Default built-in MidiSoftSynthesizer.
+        this.setMidiOutDeviceAndReceiver(); // Set and open Midi-outputDevice and receiver for it.
+        this.notes = new ArrayList<>();
+        this.tick = 0;          // Position in 1/16-notes.
+        this.ticksLeft = 0;     // Ticks left for current note.
+        this.index = 0;         // Index of next note in ArrayList.
+    }
+
+    private void setMidiOutDeviceAndReceiver() {
+        try {
+            this.outputDevice = MidiSystem.getMidiDevice(this.getMidiDeviceInfo());
+            outputDevice.open();
+            System.out.println("Midi out: " + outputDevice);
+            this.receiver = outputDevice.getReceiver();
+            System.out.println("Receiver: " + receiver);
+        } catch (MidiUnavailableException e) {
+            System.out.println("There's no Midi available.");
+        }
+    }
+
+    private MidiDevice.Info getMidiDeviceInfo() {
+        MidiDevice.Info[] infos = MidiSystem.getMidiDeviceInfo();
+
+        for (int i = 0; i < infos.length; i++) {
+            if (infos[i].getName().equals(this.deviceName)) {
+                return infos[i];
+            }
+        }
+        return null;
+    }
+
+    public void setNotes(ArrayList<MidiNote> notes) {
+        this.notes = notes;
+    }
+
+    public void begin() {
+        this.tick = 0;
+        this.index = 0;
+        this.receiver.send(this.notes.get(this.index).noteOn(), tick);
+        this.ticksLeft = this.notes.get(this.index).length();
+    }
+
+    public void forward() {
+        this.tick++;
+        this.ticksLeft--;
+        if (this.tick == 16) {
+            this.receiver.send(this.notes.get(this.index).noteOff(), tick);
+        } else if (this.ticksLeft <= 0) {
+            this.receiver.send(this.notes.get(this.index).noteOff(), tick);
+            this.index++;
+            this.receiver.send(this.notes.get(this.index).noteOn(), tick);
+            this.ticksLeft = this.notes.get(this.index).length();
+        }
+    }
+    
+    public void setSound(int channel, int sound) {
+        ShortMessage soundChange = new ShortMessage();
+        
+        try {
+            soundChange.setMessage(ShortMessage.PROGRAM_CHANGE, channel, sound, 0);
+        } catch (InvalidMidiDataException ex) {
+            System.out.println("Sound change failed.");
+        }
+        
+        this.receiver.send(soundChange, 0);
+    }
+
+}
