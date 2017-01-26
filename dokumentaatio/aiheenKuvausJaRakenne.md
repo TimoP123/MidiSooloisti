@@ -1,8 +1,8 @@
 # MidiSooloisti
 
-**Aihe:** Tarkoituksenani on toteuttaa metalligenreen soveltuva soolosoittaja ohjelmallisesti käyttäen java-kieltä.
+**Aihe:** Tarkoituksenani on toteuttaa metalligenreen soveltuva soolosoittaja ohjelmallisesti käyttäen Java-kieltä.
 
-**Toiminnot:** Tap-tempo, sävellajin valinta, kolmen tai neljän sointuasteen valinta, mahdollisuus valita nuottitiheys, soiton aloittaminen ja lopettaminen sekä MIDI-liitännän valinta ja soundin valinta.
+**Toiminnot:** Tap-tempo, sävellajin valinta, kolmen tai neljän sointuasteen valinta, mahdollisuus valita nuottitiheys, soiton aloittaminen ja lopettaminen sekä MIDI-liitännän ja soundin valinta.
 Ohjelma voi siis käyttää tietokoneen omaa sisäistä MIDI-soitinta ja sillä voi soittaa myös ulkoisia syntikoita, jos koneeseen on kytketty MIDI-liitäntä.
 
 **Toiminta:** Ohjelman logiikka tuottaa kerrallaan tahdin verran nuotteja MidiNote-luokan ilmentyminä, jotka välitetään Player-luokalle listana. Tahtilajina on 4/4 ja lyhimpänä ohjelman käsittelemänä yksikkönä 1/16-nuotti. Player-luokalle toimitetaan tieto 1/16-osan etenemisestä, jolloin se joko sammuttaa edellisen nuotin ja soittaa seuraavan tai jättää nykyisen nuotin soimaan.
