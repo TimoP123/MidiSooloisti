@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         
         Player player = new Player();
-        player.setSound(1, 83);
+        player.setSound(1, 81);
         
         int[] pitch = {72, 71, 68, 67, 65, 63, 62, 60, 59, 56, 55, 53, 51, 50, 48, 47};
         int[] length = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
@@ -30,7 +30,7 @@ public class Main {
         player.begin();
         for(int i = 0; i < 16; i++) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(80);
             } catch (InterruptedException ex) {
             }
             player.forward();

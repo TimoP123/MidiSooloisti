@@ -75,16 +75,16 @@ public class Player {
             this.ticksLeft = this.notes.get(this.index).length();
         }
     }
-    
+
     public void setSound(int channel, int sound) {
         ShortMessage soundChange = new ShortMessage();
-        
+
         try {
             soundChange.setMessage(ShortMessage.PROGRAM_CHANGE, channel, sound, 0);
         } catch (InvalidMidiDataException ex) {
             System.out.println("Sound change failed.");
         }
-        
+
         this.receiver.send(soundChange, 0);
     }
 
