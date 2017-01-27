@@ -1,3 +1,5 @@
+package midisooloisti;
+
 
 
 import org.junit.After;
