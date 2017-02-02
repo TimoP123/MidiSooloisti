@@ -1,4 +1,4 @@
-package midisooloisti;
+package midisooloisti.player;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;

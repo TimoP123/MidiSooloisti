@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
-import midisooloisti.MidiNote;
+import midisooloisti.player.MidiNote;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

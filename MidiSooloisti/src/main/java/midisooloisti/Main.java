@@ -1,5 +1,7 @@
 package midisooloisti;
 
+import midisooloisti.player.Player;
+import midisooloisti.player.MidiNote;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
