@@ -7,4 +7,7 @@ Midi-syntetisaattorin ja ohjelman välisessä kommunikaatiossa käytetään Java
 ## Dokumentaatio
 
 [Aiheen kuvaus](./dokumentaatio/aiheenKuvausJaRakenne.md)
+
 [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
+
+[Luokkakaavio](./dokumentaatio/luokkakaavio.pdf)
