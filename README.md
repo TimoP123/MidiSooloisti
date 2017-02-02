@@ -11,3 +11,5 @@ Midi-syntetisaattorin ja ohjelman välisessä kommunikaatiossa käytetään Java
 [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
 
 [Luokkakaavio](./dokumentaatio/luokkakaavio.pdf)
+
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/javalabra/blob/master/documentation/pit-reports/index.html)
