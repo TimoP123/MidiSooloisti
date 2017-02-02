@@ -65,6 +65,10 @@ public class Player {
     }
 
     public void forward() {
+        if (this.tick > 16) {
+            return;
+        }
+
         this.tick++;
         this.ticksLeft--;
         if (this.tick == 16) {

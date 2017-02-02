@@ -16,7 +16,7 @@ public class MidiNote {
         this.channel = limitValue(channel, 0, 15); // There are only 16 possible midi channels.
         this.velocity = limitValue(velocity, 0, 127);
     }
-    
+
     private int limitValue(int value, int lower, int upper) {
         if (value >= lower && value <= upper) {
             return value;

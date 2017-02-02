@@ -62,22 +62,24 @@ public class Scale {
                 }
                 break;
             }
-
             distance = newDistance;
             i++;
         }
 
+        if (i > (this.chordNotes.size() - 1)) {
+            i--;
+        }
         return this.chordNotes.get(i);
     }
 
     @Override
     public String toString() {
-        String s = "Asteikon äänet:\n";
+        String s = "Scale notes:\n";
         for (int i = 0; i < this.notes.size(); i++) {
             s += this.notes.get(i) + ", ";
         }
 
-        s += "\nSointuäänet:\n";
+        s += "\nChord notes:\n";
         for (int i = 0; i < this.chordNotes.size(); i++) {
             s += this.chordNotes.get(i) + ", ";
         }
