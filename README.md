@@ -12,4 +12,4 @@ Midi-syntetisaattorin ja ohjelman välisessä kommunikaatiossa käytetään Java
 
 [Luokkakaavio](./dokumentaatio/luokkakaavio.pdf)
 
-[pit-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/documentation/pit-raportti/index.html)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/dokumentaatio/pit-raportti/index.html)
