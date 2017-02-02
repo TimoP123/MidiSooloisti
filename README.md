@@ -7,9 +7,7 @@ Midi-syntetisaattorin ja ohjelman välisessä kommunikaatiossa käytetään Java
 ## Dokumentaatio
 
 [Aiheen kuvaus](./dokumentaatio/aiheenKuvausJaRakenne.md)
-
 [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
-
 [Luokkakaavio](./dokumentaatio/luokkakaavio.pdf)
-
 [pit-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/dokumentaatio/pit-raportti/index.html)
+[checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
