@@ -23,11 +23,11 @@ public class Main {
         //
         Random random = new Random();
         Player player = new Player();
-        player.setSound(1, 81);
+        player.setSound(1, 81);         // Channel 1, Synth lead = 81
 
         int[] notes = {0, 2, 3, 5, 7, 8, 11};   //  C harmonic minor
-        int[] notes2 = {5, 7, 8, 11, 12, 14, 15};
-        int[] notes3 = {7, 8, 11, 12, 14, 15, 17};
+        int[] notes2 = {5, 7, 8, 11, 12, 14, 15};   // 4th
+        int[] notes3 = {7, 8, 11, 12, 14, 15, 17};  // 5th
         Scale scale = new Scale(40, 90, notes);
 
         System.out.println(scale);
@@ -39,7 +39,7 @@ public class Main {
         Pattern chordDown = new ChordDown(random);
         Pattern figure3123 = new Figure3123(random);
         Pattern twoOctavesDown = new TwoOctavesDown();
-        
+
         ArrayList<Pattern> patterns = new ArrayList<>();
         patterns.add(linear);
         patterns.add(chordUp);
@@ -47,82 +47,58 @@ public class Main {
         patterns.add(chordDown);
         patterns.add(figure3123);
         patterns.add(twoOctavesDown);
-*/
+         */
 
         for (int i = 0; i < 32; i++) {
             int index = random.nextInt(patterns.size());
 
             scale.setNotes(notes);
-            
-            ArrayList<Integer> pattern = patterns.get(index).getNotes(scale, currentNote);
-            playIntList(player, pattern);
+            ArrayList<MidiNote> pattern = patterns.get(index).getNotes(scale, currentNote);
+            playNoteList(player, pattern);
             printList(pattern);
-            currentNote = pattern.get(pattern.size() - 1);
-            
-            index = random.nextInt(patterns.size());
+            currentNote = pattern.get(pattern.size() - 1).getPitch();
+
             scale.setNotes(notes2);
-            
             pattern = patterns.get(index).getNotes(scale, currentNote);
-            playIntList(player, pattern);
+            playNoteList(player, pattern);
             printList(pattern);
-            currentNote = pattern.get(pattern.size() - 1);
-            
-            index = random.nextInt(patterns.size());
+            currentNote = pattern.get(pattern.size() - 1).getPitch();
+
             scale.setNotes(notes3);
-            
             pattern = patterns.get(index).getNotes(scale, currentNote);
-            playIntList(player, pattern);
+            playNoteList(player, pattern);
             printList(pattern);
-            currentNote = pattern.get(pattern.size() - 1);
-            
-            index = random.nextInt(patterns.size());
+            currentNote = pattern.get(pattern.size() - 1).getPitch();
+
             scale.setNotes(notes);
-            
             pattern = patterns.get(index).getNotes(scale, currentNote);
-            playIntList(player, pattern);
+            playNoteList(player, pattern);
             printList(pattern);
-            currentNote = pattern.get(pattern.size() - 1);
-                    
+            currentNote = pattern.get(pattern.size() - 1).getPitch();
+
         }
 
     }
 
-    public static void playIntList(Player player, ArrayList<Integer> list) {
-        ArrayList<MidiNote> notes = new ArrayList<>();
-
-        for (int i = 0; i < 16; i++) {
-            notes.add(new MidiNote(list.get(i), 1, 1, 100));
-        }
-
-        player.setNotes(notes);
+    public static void playNoteList(Player player, ArrayList<MidiNote> list) {
+        player.setNotes(list);
         player.begin();
         for (int i = 0; i < 16; i++) {
             try {
-                Thread.sleep(10);
+                Thread.sleep(20);
             } catch (InterruptedException ex) {
             }
             player.forward();
         }
-
     }
 
-    public static ArrayList<MidiNote> notes(int[] pitch, int[] length) {
-        ArrayList<MidiNote> notes = new ArrayList<>();
-
-        for (int i = 0; i < pitch.length; i++) {
-            notes.add(new MidiNote(pitch[i], length[i], 1, 100));
-        }
-
-        return notes;
-    }
-
-    public static void printList(ArrayList<Integer> list) {
+    public static void printList(ArrayList<MidiNote> list) {
         System.out.println("Lista:");
         for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
-            if(i < (list.size() - 1)) {
+            System.out.print(list.get(i).getPitch());
+            if (i < (list.size() - 1)) {
                 System.out.print(", ");
-            } 
+            }
         }
         System.out.println("");
     }

@@ -2,10 +2,11 @@ package midisooloisti.pattern;
 
 import java.util.ArrayList;
 import java.util.Random;
+import midisooloisti.player.MidiNote;
 
 public interface Pattern {
 
-    public ArrayList<Integer> getNotes(Scale scale, int currentPitch);
+    public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch);
 
     default int direction(Random random) {
         int value = random.nextInt(100);
@@ -15,6 +16,16 @@ public interface Pattern {
         }
 
         return -1;
+    }
+
+    default ArrayList<MidiNote> integersToMidiNotes(ArrayList<Integer> pitch) {
+        ArrayList<MidiNote> notes = new ArrayList<>();
+
+        for (int i = 0; i < pitch.size(); i++) {
+            notes.add(new MidiNote(pitch.get(i), 1, 1, 100));
+        }
+
+        return notes;
     }
 
 }

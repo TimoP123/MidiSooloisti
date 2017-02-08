@@ -2,6 +2,7 @@ package midisooloisti.pattern;
 
 import java.util.ArrayList;
 import java.util.Random;
+import midisooloisti.player.MidiNote;
 
 public class Linear implements Pattern {
 
@@ -14,7 +15,7 @@ public class Linear implements Pattern {
     }
 
     @Override
-    public ArrayList<Integer> getNotes(Scale scale, int currentPitch) {
+    public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch) {
         ArrayList<Integer> notes = scale.getNotes();
         ArrayList<Integer> notePattern = new ArrayList<>();
 
@@ -32,7 +33,7 @@ public class Linear implements Pattern {
             }
         }
 
-        return notePattern;
+        return this.integersToMidiNotes(notePattern);
     }
 
     private int direction(int noteListSize, int direction) {

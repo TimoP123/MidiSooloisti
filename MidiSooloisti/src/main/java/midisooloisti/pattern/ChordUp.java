@@ -2,6 +2,7 @@ package midisooloisti.pattern;
 
 import java.util.ArrayList;
 import java.util.Random;
+import midisooloisti.player.MidiNote;
 
 
 public class ChordUp implements Pattern {
@@ -15,7 +16,7 @@ public class ChordUp implements Pattern {
     }
 
     @Override
-    public ArrayList<Integer> getNotes(Scale scale, int currentPitch) {
+    public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch) {
         ArrayList<Integer> chordNotes = scale.getChordNotes();
         ArrayList<Integer> notePattern = new ArrayList<>();
 
@@ -39,7 +40,7 @@ public class ChordUp implements Pattern {
         // Last note = surprise note
         notePattern.set((notePattern.size() - 1), (notePattern.get(notePattern.size() - 1) - 1));
         
-        return notePattern;
+        return this.integersToMidiNotes(notePattern);
     }
 
     private int direction(int arraySize, int direction) {

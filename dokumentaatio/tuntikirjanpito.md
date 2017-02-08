@@ -10,4 +10,7 @@ Päivä | Tunnit | Kuvaus
 29.01.2017 | 3h | Vanhojen kurssimateriaalien läpikäyntiä Interfaceen ja luokkakaavioihin liittyen.
 03.02.2017 | 3h | Scale-luokan ohjelmointia ja samalla Pattern-rajapintaluokkien hahmottelua.
 04.02.2017 | 5h | Pattern-rajapinta ja pari sen toteuttavaa luokkaa sekä testikoodia näille. Bugien korjailuja sekä viikon palautukseen liittyvien asioiden viimeistelyä.
+06.02.2017 | 3h | Uusien nuottikuvioita tekevien luokkien ohjelmointia ja testailua.
+07.02.2017 | 4h | Lähinnä tappelua NetBeansin kanssa.
+08.02.2017 | 5h | Olemassaolevien koodien parantelua sekä testejä Scale-luokalle.
 ... | ... | ...
