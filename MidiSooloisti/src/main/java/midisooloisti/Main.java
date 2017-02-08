@@ -28,7 +28,7 @@ public class Main {
         int[] notes = {0, 2, 3, 5, 7, 8, 11};   //  C harmonic minor
         int[] notes2 = {5, 7, 8, 11, 12, 14, 15};
         int[] notes3 = {7, 8, 11, 12, 14, 15, 17};
-        Scale scale = new Scale(45, 90, notes);
+        Scale scale = new Scale(40, 90, notes);
 
         System.out.println(scale);
 
@@ -43,9 +43,11 @@ public class Main {
         ArrayList<Pattern> patterns = new ArrayList<>();
         patterns.add(linear);
         patterns.add(chordUp);
+        /*
         patterns.add(chordDown);
         patterns.add(figure3123);
         patterns.add(twoOctavesDown);
+*/
 
         for (int i = 0; i < 32; i++) {
             int index = random.nextInt(patterns.size());
@@ -96,7 +98,7 @@ public class Main {
         player.begin();
         for (int i = 0; i < 16; i++) {
             try {
-                Thread.sleep(90);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
             }
             player.forward();

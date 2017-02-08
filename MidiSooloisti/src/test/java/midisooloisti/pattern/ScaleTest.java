@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package midisooloisti.pattern;
 
 import org.junit.After;
@@ -12,34 +7,24 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author tpudas
- */
 public class ScaleTest {
-    
-    public ScaleTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    Scale scale;
+
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        int[] notes = {0, 2, 3, 5, 7, 8, 11};
+        this.scale = new Scale(40, 90, notes);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void rightAmountOfNotesAvailable() {
+        assertEquals(29, scale.getNotes().size());
+    }
+
+    @Test
+    public void rightAmountOfChordNotesAvailable() {
+        assertEquals(12, scale.getChordNotes().size());
+    }
+
 }

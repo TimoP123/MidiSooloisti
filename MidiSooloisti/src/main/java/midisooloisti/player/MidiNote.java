@@ -3,6 +3,10 @@ package midisooloisti.player;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.ShortMessage;
 
+/**
+ *    MidiNote-luokan avulla saadaan tallennettua yksittäiseen nuottiin liittyvät tiedot. Luokka tarjoaa metodit nuottien soittamiseen
+ *    tarvittavien ShortMessage-olioiden muodostamiseen sekä nuotin pituuden tarkistamiseen.
+ */
 public class MidiNote {
 
     private int pitch;
@@ -27,11 +31,22 @@ public class MidiNote {
         }
     }
 
+/**
+ *    Metodi muodostaa ShortMessage-olion, jonka avulla saadaan Midi-laite soittamaan yksittäisen nuotin.
+ *
+ *    @return    ShortMessage, joka asettaa nuotin soimaan.
+ */
     public ShortMessage noteOn() {
         ShortMessage noteOn = this.midiMessage(true);
         return noteOn;
     }
 
+
+/**
+ *    Metodi muodostaa ShortMessage-olion, jonka avulla saadaan soiva nuotti sammutettua Midi-laitteelta.
+ *
+ *    @return    ShortMessage, joka sammuttaa nuotin.
+ */
     public ShortMessage noteOff() {
         ShortMessage noteOff = this.midiMessage(false);
         return noteOff;

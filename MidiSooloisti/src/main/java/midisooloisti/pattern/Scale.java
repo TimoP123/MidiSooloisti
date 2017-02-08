@@ -3,6 +3,11 @@ package midisooloisti.pattern;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ *    Scale-luokka huolehtii käytettävän asteikon mukaisten äänenkorkeusarvojen laskemisesta sekä asteikko- ja sointuäänilistojen
+ *    tarjoamisesta niitä tarvitseville metodeille. Luokan konstruktorissa annetaan parametreina käytettävän asteikkoa
+ *
+ */
 public class Scale {
 
     private int lowerLimit;
@@ -19,11 +24,10 @@ public class Scale {
     }
 
     public void setNotes(int[] baseValues) {
-
         this.notes.clear();
         this.chordNotes.clear();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             for (int j = 0; j < baseValues.length; j++) {
                 int pitch = i * 12 + baseValues[j];
                 if (pitch < this.lowerLimit) {
@@ -64,32 +68,61 @@ public class Scale {
                 }
                 break;
             }
+
             distance = newDistance;
             i++;
         }
+        
+        if(i > (chordNotes.size() - 1)) i--;
 
-        if (i > (this.chordNotes.size() - 1)) {
-            i--;
-        }
         return this.chordNotes.get(i);
     }
 
+    public int findIndexOfPitch(int pitch) {
+        for (int i = 0; i < this.notes.size(); i++) {
+            if (this.notes.get(i) == pitch) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int findIndexOfClosestChordNote(int pitch) {
+        return this.findIndexOfPitch(this.closestChordNote(pitch));
+    }
+
+    public int findIndexOfPitchInChordNotes(int pitch) {
+        for (int i = 0; i < this.chordNotes.size(); i++) {
+            if(this.chordNotes.get(i) == pitch) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int findIndexOfClosestChordNoteInChordNotes(int pitch) {
+        return this.findIndexOfPitchInChordNotes(this.closestChordNote(pitch));
+    }
+
+    
     @Override
     public String toString() {
-        String s = "Scale notes:\n";
-        for (int i = 0; i < this.notes.size(); i++) {
-            s += this.notes.get(i);
-            s += ", ";
-        }
-
-        s += "\nChord notes:\n";
-        for (int i = 0; i < this.chordNotes.size(); i++) {
-            s += this.chordNotes.get(i);
-            if (i < (this.notes.size() - 1)) {
+        String s = "Asteikon äänet:\n";
+        s += printableList(this.notes);
+        s += "Sointuäänet:\n";
+        s += printableList(this.chordNotes);
+        return s;
+    }
+    
+    private String printableList(ArrayList<Integer> list) {
+        String s = "";
+        for(int i = 0; i < list.size(); i++) {
+            s += list.get(i);
+            if(i < (list.size() - 1)) {
                 s += ", ";
             }
         }
-
+        s += "\n";
         return s;
     }
 }

@@ -21,10 +21,9 @@ public class Linear implements Pattern {
         int direction = this.direction(random);
 
         for (int i = 0; i < 4; i++) {
-            currentPitch = scale.closestChordNote(currentPitch);
-            this.currentNoteIndex = this.findIndexOfPitch(scale, currentPitch);
-
+            currentNoteIndex = scale.findIndexOfClosestChordNote(currentPitch);
             notePattern.add(notes.get(this.currentNoteIndex));
+            
             for (int j = 0; j < 3; j++) {
                 direction = direction(notes.size(), direction);
                 currentNoteIndex += direction;

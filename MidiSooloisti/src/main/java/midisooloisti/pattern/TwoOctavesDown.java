@@ -18,7 +18,7 @@ public class TwoOctavesDown implements Pattern {
         ArrayList<Integer> notePattern = new ArrayList<>();
 
         currentPitch = scale.closestChordNote(currentPitch);
-        this.currentNoteIndex = this.findIndexOfPitch(scale, currentPitch);
+        //this.currentNoteIndex = this.findIndexOfPitch(scale, currentPitch);
         if (this.currentNoteIndex < 15) {
             this.currentNoteIndex = 15;
         }

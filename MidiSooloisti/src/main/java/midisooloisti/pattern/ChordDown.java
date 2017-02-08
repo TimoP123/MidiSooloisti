@@ -23,7 +23,7 @@ public class ChordDown implements Pattern {
         int direction = this.direction(random);
 
         currentPitch = scale.closestChordNote(currentPitch);
-        this.currentChordNoteIndex = this.findIndexOfPitchInChordNotes(scale, currentPitch);
+        //this.currentChordNoteIndex = this.findIndexOfPitchInChordNotes(scale, currentPitch);
 
         if (currentChordNoteIndex == (chordNotes.size() - 1)) {
             direction = -1;

@@ -20,7 +20,7 @@ public class Figure3123 implements Pattern {
 
         int direction = this.direction(random);
         currentPitch = scale.closestChordNote(currentPitch);
-        this.currentNoteIndex = this.findIndexOfPitch(scale, currentPitch);
+        //this.currentNoteIndex = this.findIndexOfPitch(scale, currentPitch);
         if (this.currentNoteIndex < 3 && direction == -1) {
             this.currentNoteIndex = 4;
         }
