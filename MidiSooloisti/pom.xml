@@ -18,6 +18,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>midisooloisti</groupId>
+            <artifactId>MidiSooloisti</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -37,9 +44,11 @@
                 <configuration>
                     <targetClasses>
                         <param>midisooloisti.player.MidiNot*</param>
+                        <param>midisooloisti.pattern.Scal*</param>
                     </targetClasses>
                     <targetTests>
                         <param>midisooloisti.player.MidiNoteTe*</param>
+                        <param>midisooloisti.pattern.Scal*</param>
                     </targetTests>
                 </configuration>
             </plugin>

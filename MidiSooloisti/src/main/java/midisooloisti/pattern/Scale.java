@@ -1,6 +1,7 @@
 package midisooloisti.pattern;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Scale {
 
@@ -18,6 +19,7 @@ public class Scale {
     }
 
     public void setNotes(int[] baseValues) {
+
         this.notes.clear();
         this.chordNotes.clear();
 
@@ -76,12 +78,16 @@ public class Scale {
     public String toString() {
         String s = "Scale notes:\n";
         for (int i = 0; i < this.notes.size(); i++) {
-            s += this.notes.get(i) + ", ";
+            s += this.notes.get(i);
+            s += ", ";
         }
 
         s += "\nChord notes:\n";
         for (int i = 0; i < this.chordNotes.size(); i++) {
-            s += this.chordNotes.get(i) + ", ";
+            s += this.chordNotes.get(i);
+            if (i < (this.notes.size() - 1)) {
+                s += ", ";
+            }
         }
 
         return s;

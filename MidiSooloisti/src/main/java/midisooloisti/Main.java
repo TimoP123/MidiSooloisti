@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import midisooloisti.pattern.ChordDown;
 import midisooloisti.pattern.ChordUp;
+import midisooloisti.pattern.Figure3123;
 import midisooloisti.pattern.Linear;
 import midisooloisti.pattern.Pattern;
 import midisooloisti.pattern.Scale;
+import midisooloisti.pattern.TwoOctavesDown;
 
 public class Main {
 
@@ -23,25 +26,61 @@ public class Main {
         player.setSound(1, 81);
 
         int[] notes = {0, 2, 3, 5, 7, 8, 11};   //  C harmonic minor
-        Scale scale = new Scale(45, 85, notes);
+        int[] notes2 = {5, 7, 8, 11, 12, 14, 15};
+        int[] notes3 = {7, 8, 11, 12, 14, 15, 17};
+        Scale scale = new Scale(45, 90, notes);
 
         System.out.println(scale);
 
-        int currentNote = 54;
+        int currentNote = 85;
 
-        Pattern lineaarinen = new Linear(random);
+        Pattern linear = new Linear(random);
         Pattern chordUp = new ChordUp(random);
+        Pattern chordDown = new ChordDown(random);
+        Pattern figure3123 = new Figure3123(random);
+        Pattern twoOctavesDown = new TwoOctavesDown();
+        
+        ArrayList<Pattern> patterns = new ArrayList<>();
+        patterns.add(linear);
+        patterns.add(chordUp);
+        patterns.add(chordDown);
+        patterns.add(figure3123);
+        patterns.add(twoOctavesDown);
 
-        for (int i = 0; i < 16; i++) {
-            ArrayList<Integer> pattern = lineaarinen.getNotes(scale, currentNote);
+        for (int i = 0; i < 32; i++) {
+            int index = random.nextInt(patterns.size());
+
+            scale.setNotes(notes);
+            
+            ArrayList<Integer> pattern = patterns.get(index).getNotes(scale, currentNote);
             playIntList(player, pattern);
             printList(pattern);
             currentNote = pattern.get(pattern.size() - 1);
-
-            pattern = chordUp.getNotes(scale, currentNote);
+            
+            index = random.nextInt(patterns.size());
+            scale.setNotes(notes2);
+            
+            pattern = patterns.get(index).getNotes(scale, currentNote);
             playIntList(player, pattern);
             printList(pattern);
             currentNote = pattern.get(pattern.size() - 1);
+            
+            index = random.nextInt(patterns.size());
+            scale.setNotes(notes3);
+            
+            pattern = patterns.get(index).getNotes(scale, currentNote);
+            playIntList(player, pattern);
+            printList(pattern);
+            currentNote = pattern.get(pattern.size() - 1);
+            
+            index = random.nextInt(patterns.size());
+            scale.setNotes(notes);
+            
+            pattern = patterns.get(index).getNotes(scale, currentNote);
+            playIntList(player, pattern);
+            printList(pattern);
+            currentNote = pattern.get(pattern.size() - 1);
+                    
         }
 
     }
@@ -78,7 +117,10 @@ public class Main {
     public static void printList(ArrayList<Integer> list) {
         System.out.println("Lista:");
         for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + ", ");
+            System.out.print(list.get(i));
+            if(i < (list.size() - 1)) {
+                System.out.print(", ");
+            } 
         }
         System.out.println("");
     }

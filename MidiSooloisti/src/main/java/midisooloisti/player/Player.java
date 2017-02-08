@@ -23,6 +23,7 @@ public class Player {
 
     public Player() {
         this.deviceName = "Gervill";    // Default built-in MidiSoftSynthesizer.
+        //this.deviceName = "M4x4 [hw:2,0,0]";
         this.setMidiOutDeviceAndReceiver(); // Set and open Midi-outputDevice and receiver for it.
         this.notes = new ArrayList<>();
         this.tick = 0;          // Position in 1/16-notes.
@@ -46,6 +47,15 @@ public class Player {
         MidiDevice.Info[] infos = MidiSystem.getMidiDeviceInfo();
 
         for (int i = 0; i < infos.length; i++) {
+            MidiDevice device;
+            try {
+                device = MidiSystem.getMidiDevice(infos[i]);
+                if (device.getMaxReceivers() == 0) {
+                    continue;
+                }
+            } catch (MidiUnavailableException ex) {
+            }
+
             if (infos[i].getName().equals(this.deviceName)) {
                 return infos[i];
             }
