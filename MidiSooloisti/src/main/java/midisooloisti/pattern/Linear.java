@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import midisooloisti.player.MidiNote;
 
+/**
+ *    Linear toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuottikuvio
+ *    muodostuu neljästä peräkkäisestä asteikkoon kuuluvasta äänestä. Kuvio voi olla nouseva tai laskeva ja tämä
+ *    valitaan satunnaisesti tahdin alussa. Kuvioita mahtuu tahtiin kaikkiaan neljä kappaletta ja ne kukin
+ *    alkavat kyseiseen asteikkoon ja sointuasteeseen liittyvältä sointuääneltä. Nuottikuvion aloituskohta siirtyy 
+ *    sointuääniä pitkin ylöspäin tai alaspäin. Tämä suunta valitaan myös tahdin alussa satunnaisesti ja suunta
+ *    kääntyy, jos kesken tahtia saavutaan käytettävän nuottialueen rajalle.
+ */
 public class Linear implements Pattern {
 
     private int currentNoteIndex;

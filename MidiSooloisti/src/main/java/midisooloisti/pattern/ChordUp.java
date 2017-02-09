@@ -4,15 +4,22 @@ import java.util.ArrayList;
 import java.util.Random;
 import midisooloisti.player.MidiNote;
 
-
+/**
+ *    ChordUp toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuottikuvio
+ *    muodostuu neljästä ylöspäin kulkevasta sointuäänestä. Neljän nuotin ryhmän seuraava sijainti on yhtä sointuääntä
+ *    ylempänä tai alempana riippuen tahdin alussa määriteltävästä suuntamuuttujasta. Jos asetetun nuottialueen rajat
+ *    tulevat vastaan kesken tahdin, vaihdetaan nuottikuvion etenemissuuntaa.
+ */
 public class ChordUp implements Pattern {
 
     private int currentChordNoteIndex;
     private Random random;
+    private int limit;
 
     public ChordUp(Random random) {
         this.random = random;
         this.currentChordNoteIndex = 0;
+        this.limit = 4;     // Notes are in groups of four descending notes.
     }
 
     @Override
@@ -21,14 +28,14 @@ public class ChordUp implements Pattern {
         ArrayList<Integer> notePattern = new ArrayList<>();
 
         int direction = this.direction(random);
-        this.currentChordNoteIndex = scale.findIndexOfClosestChordNote(currentPitch);
+        this.currentChordNoteIndex = scale.findIndexOfClosestChordNoteInChordNotes(currentPitch);
 
-        if(this.currentChordNoteIndex > (chordNotes.size() - 4)) {
-            this.currentChordNoteIndex = chordNotes.size() - this.random.nextInt(chordNotes.size() - 6) - 4;
+        if(this.currentChordNoteIndex > (chordNotes.size() - limit)) {
+            this.currentChordNoteIndex = chordNotes.size() - this.random.nextInt(limit) - limit;
         }
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 4; i++) {       // Four quarter notes
+            for (int j = 0; j < 4; j++) {   // Groups of four sixteenth notes
                 notePattern.add(chordNotes.get(this.currentChordNoteIndex + j));
             }
 
@@ -46,7 +53,7 @@ public class ChordUp implements Pattern {
     private int direction(int arraySize, int direction) {
         if (this.currentChordNoteIndex == 0) {
             return 1;
-        } else if (this.currentChordNoteIndex >= (arraySize - 5)) {
+        } else if (this.currentChordNoteIndex >= (arraySize - limit)) {
             return -1;
         }
 

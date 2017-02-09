@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.Random;
 import midisooloisti.player.MidiNote;
 
+/**
+ *    ChordDown toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuottikuvio
+ *    muodostuu neljästä alaspäin kulkevasta sointuäänestä. Neljän nuotin ryhmän seuraava sijainti on yhtä sointuääntä
+ *    ylempänä tai alempana riippuen tahdin alussa määriteltävästä suuntamuuttujasta. Jos asetetun nuottialueen rajat
+ *    tulevat vastaan kesken tahdin, vaihdetaan nuottikuvion etenemissuuntaa.
+ */
 public class ChordDown implements Pattern {
-
-    private int currentNoteIndex;
+    
     private int currentChordNoteIndex;
     private Random random;
+    private int limit;
 
     public ChordDown(Random random) {
         this.random = random;
-        this.currentNoteIndex = 0;
         this.currentChordNoteIndex = 0;
+        this.limit = 4;     // Notes are in groups of four descending notes.
     }
 
     @Override
@@ -22,42 +28,36 @@ public class ChordDown implements Pattern {
         ArrayList<Integer> notePattern = new ArrayList<>();
 
         int direction = this.direction(random);
-
-        currentPitch = scale.closestChordNote(currentPitch);
-        //this.currentChordNoteIndex = this.findIndexOfPitchInChordNotes(scale, currentPitch);
-
-        if (currentChordNoteIndex == (chordNotes.size() - 1)) {
-            direction = -1;
-        } else if (currentChordNoteIndex <= 3) {
-            direction = 1;
+        this.currentChordNoteIndex = scale.findIndexOfClosestChordNoteInChordNotes(currentPitch);
+        
+        if(this.currentChordNoteIndex > (chordNotes.size() - limit)) {
+            this.currentChordNoteIndex = chordNotes.size() - this.random.nextInt(limit) - limit;
         }
-
-        for (int i = 0; i < 4; i++) {
-
-            notePattern.add(chordNotes.get(this.currentChordNoteIndex));
-
-            for (int j = 1; j < 4; j++) {
-                int index = this.currentChordNoteIndex - j;
-                if (index < 0) {
-                    index += 3;
-                }
-
-                currentPitch = chordNotes.get(index);
-                notePattern.add(currentPitch);
-
+        
+        for (int i = 0; i < 4; i++) {       // Four quarter notes
+            for (int j = 3; j >= 0; j--) {  // Groups of four sixteenth notes
+                notePattern.add(chordNotes.get(this.currentChordNoteIndex + j));
             }
 
-            currentChordNoteIndex += direction;
-            if (currentChordNoteIndex <= 3) {
-                direction = 1;
-            } else if (currentChordNoteIndex == (chordNotes.size() - 1)) {
-                direction = -1;
-            }
+            direction = this.direction(chordNotes.size(), direction);
+            this.currentChordNoteIndex += direction;
+
         }
 
         // Last note = surprise note
         notePattern.set((notePattern.size() - 1), (notePattern.get(notePattern.size() - 1) - 1));
-
+        
         return this.integersToMidiNotes(notePattern);
     }
+
+    private int direction(int arraySize, int direction) {
+        if (this.currentChordNoteIndex == 0) {
+            return 1;
+        } else if (this.currentChordNoteIndex >= (arraySize - limit)) {
+            return -1;
+        }
+
+        return direction;
+    }
+    
 }
