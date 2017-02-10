@@ -13,4 +13,6 @@ Päivä | Tunnit | Kuvaus
 06.02.2017 | 3h | Uusien nuottikuvioita tekevien luokkien ohjelmointia ja testailua.
 07.02.2017 | 4h | Lähinnä tappelua NetBeansin kanssa.
 08.02.2017 | 5h | Olemassaolevien koodien parantelua sekä testejä Scale-luokalle.
+09.02.2017 | 4h | Uusia Pattern-rajapinnan toteuttavia luokkia.
+10.02.2017 | 6h | Testejä oikein urakalla ja lisää Javadocia.
 ... | ... | ...

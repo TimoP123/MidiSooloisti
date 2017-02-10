@@ -5,10 +5,12 @@ import java.util.Random;
 import midisooloisti.player.MidiNote;
 
 /**
- *    TwoOctavesDown toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuotit ovat
- *    peräkkäisiä laskevia nuotteja. Kuvion aloituskohta valitaan satunnaisesti siten, että mahdollisuuksien mukaan
- *    jokainen nuotti voisi olla edeltäjäänsä yhtä alempana. Jos käytettävissä olevien nuottien määrä ei riitä tähän,
- *    nostetaan soitettavaa nuottia tarvittaessa oktaavin verran ylemmäksi.
+ * TwoOctavesDown toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran
+ * nuotteja MidiNote-listana. Nuotit ovat peräkkäisiä laskevia nuotteja. Kuvion
+ * aloituskohta valitaan satunnaisesti siten, että mahdollisuuksien mukaan
+ * jokainen nuotti voisi olla edeltäjäänsä yhtä alempana. Jos käytettävissä
+ * olevien nuottien määrä ei riitä tähän, nostetaan soitettavaa nuottia
+ * tarvittaessa oktaavin verran ylemmäksi.
  */
 public class TwoOctavesDown implements Pattern {
 
@@ -37,7 +39,7 @@ public class TwoOctavesDown implements Pattern {
             this.currentNoteIndex--;
             if (this.currentNoteIndex < 0) {
                 this.currentNoteIndex += 12;
-                if(this.currentNoteIndex > notes.size()) {
+                if (this.currentNoteIndex > notes.size()) {
                     this.currentNoteIndex = notes.size() - 1;
                 }
             }

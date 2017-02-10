@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *    Scale-luokka huolehtii käytettävän asteikon mukaisten äänenkorkeusarvojen laskemisesta sekä asteikko- ja sointuäänilistojen
- *    tarjoamisesta niitä tarvitseville metodeille. Luokan konstruktorissa annetaan parametreina käytettävän asteikkoa
+ * Scale-luokka huolehtii käytettävän asteikon mukaisten äänenkorkeusarvojen
+ * laskemisesta sekä asteikko- ja sointuäänilistojen tarjoamisesta niitä
+ * tarvitseville metodeille. Luokan konstruktorissa annetaan parametreina
+ * käytettävän asteikkoa
  *
  */
 public class Scale {
@@ -72,8 +74,10 @@ public class Scale {
             distance = newDistance;
             i++;
         }
-        
-        if(i > (chordNotes.size() - 1)) i--;
+
+        if (i > (chordNotes.size() - 1)) {
+            i--;
+        }
 
         return this.chordNotes.get(i);
     }
@@ -93,7 +97,7 @@ public class Scale {
 
     public int findIndexOfPitchInChordNotes(int pitch) {
         for (int i = 0; i < this.chordNotes.size(); i++) {
-            if(this.chordNotes.get(i) == pitch) {
+            if (this.chordNotes.get(i) == pitch) {
                 return i;
             }
         }
@@ -104,7 +108,6 @@ public class Scale {
         return this.findIndexOfPitchInChordNotes(this.closestChordNote(pitch));
     }
 
-    
     @Override
     public String toString() {
         String s = "Asteikon äänet:\n";
@@ -113,12 +116,12 @@ public class Scale {
         s += printableList(this.chordNotes);
         return s;
     }
-    
+
     private String printableList(ArrayList<Integer> list) {
         String s = "";
-        for(int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             s += list.get(i);
-            if(i < (list.size() - 1)) {
+            if (i < (list.size() - 1)) {
                 s += ", ";
             }
         }

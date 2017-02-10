@@ -48,13 +48,13 @@
                         <param>midisooloisti.pattern.Lin*</param>
                         <param>midisooloisti.pattern.Ch*</param>
                         <param>midisooloisti.pattern.Tw*</param>
+                        <param>midisooloisti.pattern.Fi*</param>
+                        <param>midisooloisti.pattern.Ba*</param>
                     </targetClasses>
                     <targetTests>
                         <param>midisooloisti.player.MidiNoteTe*</param>
-                        <param>midisooloisti.pattern.Scal*</param>
-                        <param>midisooloisti.pattern.Lin*</param>
-                        <param>midisooloisti.pattern.Ch*</param>
-                        <param>midisooloisti.pattern.Tw*</param>
+                        <param>midisooloisti.pattern.*</param>
+
                     </targetTests>
                 </configuration>
             </plugin>

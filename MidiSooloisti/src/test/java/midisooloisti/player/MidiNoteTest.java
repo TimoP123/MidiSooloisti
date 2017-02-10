@@ -1,6 +1,5 @@
 package midisooloisti.player;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.midi.InvalidMidiDataException;
@@ -39,7 +38,7 @@ public class MidiNoteTest {
         MidiNote note = new MidiNote(65, -3, 1, 80);
         assertEquals(1, note.length());
     }
-    
+
     @Test
     public void maximumLengthIs16() {
         MidiNote note = new MidiNote(65, 20, 1, 80);
@@ -70,35 +69,35 @@ public class MidiNoteTest {
         ShortMessage compare = note.noteOn();
         assertEquals(80, compare.getData2());
     }
-    
+
     @Test
     public void velocityIsAlwaysAtLeastZero() {
         MidiNote note = new MidiNote(65, 2, 1, -10);
         ShortMessage compare = note.noteOn();
         assertEquals(0, compare.getData2());
     }
-    
+
     @Test
     public void maxVelocityIs127() {
         MidiNote note = new MidiNote(65, 2, 1, 300);
         ShortMessage compare = note.noteOn();
         assertEquals(127, compare.getData2());
     }
-    
+
     @Test
     public void pitchIsOkInMidiMessage() {
         MidiNote note = new MidiNote(72, 2, 1, 90);
         ShortMessage compare = note.noteOn();
         assertEquals(72, compare.getData1());
     }
-    
+
     @Test
     public void pitchIsAtLeastZero() {
         MidiNote note = new MidiNote(-35, 2, 1, 90);
         ShortMessage compare = note.noteOn();
         assertEquals(0, compare.getData1());
     }
-    
+
     @Test
     public void maxValueForPitchIs127() {
         MidiNote note = new MidiNote(200, 2, 1, 90);

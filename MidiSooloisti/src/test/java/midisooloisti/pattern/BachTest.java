@@ -1,19 +1,21 @@
+
 package midisooloisti.pattern;
 
+import java.util.ArrayList;
 import java.util.Random;
+import midisooloisti.player.MidiNote;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import midisooloisti.player.MidiNote;
 
-public class TwoOctavesDownTest {
-
+public class BachTest {
+    
     Scale scale;
     int[] notes;
-    TwoOctavesDown octaves;
+    Bach bach;
     int minLimit;
     int maxLimit;
 
@@ -24,14 +26,14 @@ public class TwoOctavesDownTest {
         this.minLimit = 45;
         this.maxLimit = 93;
         this.scale = new Scale(this.minLimit, this.maxLimit, notes);
-        this.octaves = new TwoOctavesDown(random);
+        this.bach = new Bach(random);
     }
-
+    
     @Test
     public void getNotesReturnsOnlyNotesInTheScale() {
         boolean ok = true;
         boolean flag = false;
-        for (MidiNote note : octaves.getNotes(scale, 57)) {
+        for (MidiNote note : bach.getNotes(scale, 75)) {
             for (int i = 0; i < notes.length; i++) {
                 if (note.getPitch() % 12 == notes[i]) {
                     flag = true;
@@ -44,21 +46,23 @@ public class TwoOctavesDownTest {
         }
         assertTrue(ok);
     }
-
+    
     @Test
-    public void getNotesReturnsOnlyNotesInScaleArea() {
-        boolean ok = true;
-        for (MidiNote note : octaves.getNotes(scale, 24)) {
-            if (note.getPitch() < this.minLimit || note.getPitch() > this.maxLimit) {
-                ok = false;
-            }
-        }
-        assertTrue(ok);
+    public void thePatternShapeIsCorrect() {
+        ArrayList<MidiNote> notes = bach.getNotes(scale, 77);
+        assertEquals(79, notes.get(0).getPitch());
+        assertEquals(75, notes.get(1).getPitch());
+        assertEquals(74, notes.get(2).getPitch());
+        assertEquals(75, notes.get(3).getPitch());
+        assertEquals(72, notes.get(4).getPitch());
+        assertEquals(75, notes.get(5).getPitch());
+        assertEquals(74, notes.get(6).getPitch());
+        assertEquals(75, notes.get(7).getPitch());
     }
-
+    
     @Test
     public void getNotesReturnsSixteenNotes() {
-        assertEquals(16, octaves.getNotes(scale, minLimit).size());
+        assertEquals(16, bach.getNotes(scale, 77).size());
     }
 
 }

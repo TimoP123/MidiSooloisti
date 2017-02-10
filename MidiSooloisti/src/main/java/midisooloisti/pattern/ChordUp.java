@@ -5,10 +5,12 @@ import java.util.Random;
 import midisooloisti.player.MidiNote;
 
 /**
- *    ChordUp toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuottikuvio
- *    muodostuu neljästä ylöspäin kulkevasta sointuäänestä. Neljän nuotin ryhmän seuraava sijainti on yhtä sointuääntä
- *    ylempänä tai alempana riippuen tahdin alussa määriteltävästä suuntamuuttujasta. Jos asetetun nuottialueen rajat
- *    tulevat vastaan kesken tahdin, vaihdetaan nuottikuvion etenemissuuntaa.
+ * ChordUp toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja
+ * MidiNote-listana. Nuottikuvio muodostuu neljästä ylöspäin kulkevasta
+ * sointuäänestä. Neljän nuotin ryhmän seuraava sijainti on yhtä sointuääntä
+ * ylempänä tai alempana riippuen tahdin alussa määriteltävästä
+ * suuntamuuttujasta. Jos asetetun nuottialueen rajat tulevat vastaan kesken
+ * tahdin, vaihdetaan nuottikuvion etenemissuuntaa.
  */
 public class ChordUp implements Pattern {
 
@@ -30,7 +32,7 @@ public class ChordUp implements Pattern {
         int direction = this.direction(random);
         this.currentChordNoteIndex = scale.findIndexOfClosestChordNoteInChordNotes(currentPitch);
 
-        if(this.currentChordNoteIndex > (chordNotes.size() - limit)) {
+        if (this.currentChordNoteIndex > (chordNotes.size() - limit)) {
             this.currentChordNoteIndex = chordNotes.size() - this.random.nextInt(limit) - limit;
         }
 
@@ -46,7 +48,7 @@ public class ChordUp implements Pattern {
 
         // Last note = surprise note
         notePattern.set((notePattern.size() - 1), (notePattern.get(notePattern.size() - 1) - 1));
-        
+
         return this.integersToMidiNotes(notePattern);
     }
 

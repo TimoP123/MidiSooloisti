@@ -5,13 +5,15 @@ import java.util.Random;
 import midisooloisti.player.MidiNote;
 
 /**
- *    ChordDown toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuottikuvio
- *    muodostuu neljästä alaspäin kulkevasta sointuäänestä. Neljän nuotin ryhmän seuraava sijainti on yhtä sointuääntä
- *    ylempänä tai alempana riippuen tahdin alussa määriteltävästä suuntamuuttujasta. Jos asetetun nuottialueen rajat
- *    tulevat vastaan kesken tahdin, vaihdetaan nuottikuvion etenemissuuntaa.
+ * ChordDown toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja
+ * MidiNote-listana. Nuottikuvio muodostuu neljästä alaspäin kulkevasta
+ * sointuäänestä. Neljän nuotin ryhmän seuraava sijainti on yhtä sointuääntä
+ * ylempänä tai alempana riippuen tahdin alussa määriteltävästä
+ * suuntamuuttujasta. Jos asetetun nuottialueen rajat tulevat vastaan kesken
+ * tahdin, vaihdetaan nuottikuvion etenemissuuntaa.
  */
 public class ChordDown implements Pattern {
-    
+
     private int currentChordNoteIndex;
     private Random random;
     private int limit;
@@ -29,11 +31,11 @@ public class ChordDown implements Pattern {
 
         int direction = this.direction(random);
         this.currentChordNoteIndex = scale.findIndexOfClosestChordNoteInChordNotes(currentPitch);
-        
-        if(this.currentChordNoteIndex > (chordNotes.size() - limit)) {
+
+        if (this.currentChordNoteIndex > (chordNotes.size() - limit)) {
             this.currentChordNoteIndex = chordNotes.size() - this.random.nextInt(limit) - limit;
         }
-        
+
         for (int i = 0; i < 4; i++) {       // Four quarter notes
             for (int j = 3; j >= 0; j--) {  // Groups of four sixteenth notes
                 notePattern.add(chordNotes.get(this.currentChordNoteIndex + j));
@@ -46,7 +48,7 @@ public class ChordDown implements Pattern {
 
         // Last note = surprise note
         notePattern.set((notePattern.size() - 1), (notePattern.get(notePattern.size() - 1) - 1));
-        
+
         return this.integersToMidiNotes(notePattern);
     }
 
@@ -59,5 +61,5 @@ public class ChordDown implements Pattern {
 
         return direction;
     }
-    
+
 }

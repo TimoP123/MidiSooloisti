@@ -1,4 +1,3 @@
-
 package midisooloisti.pattern;
 
 import java.util.ArrayList;
@@ -6,14 +5,15 @@ import java.util.Random;
 import midisooloisti.player.MidiNote;
 
 /**
- *    Bach toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja MidiNote-listana. Nuottikuvio
- *    muodostuu kahdesta kahdeksan kuudestoistaosanuotin mittaisesta melodiasta. Tämä melodia on sama, jolla
- *    Bachin Preludi (cm, Das Wohltemperierte Klavier I) alkaa. Tässä tapauksessa tämä melodia voi alkaa miltä
- *    sointuääneltä tahansa ja tahdin puolivälissä se siirretään satunnaisesti yhden sointuäänen verran ylemmäksi
- *    tai alemmaksi.
+ * Bach toteuttaa Pattern-rajapinnan. Luokka tuottaa tahdin verran nuotteja
+ * MidiNote-listana. Nuottikuvio muodostuu kahdesta kahdeksan
+ * kuudestoistaosanuotin mittaisesta melodiasta. Tämä melodia on sama, jolla
+ * Bachin Preludi (cm, Das Wohltemperierte Klavier I) alkaa. Tässä tapauksessa
+ * tämä melodia voi alkaa miltä sointuääneltä tahansa ja tahdin puolivälissä se
+ * siirretään satunnaisesti yhden sointuäänen verran ylemmäksi tai alemmaksi.
  */
 public class Bach implements Pattern {
-    
+
     private int currentChordNoteIndex;
     private Random random;
     private int limit;
@@ -32,11 +32,11 @@ public class Bach implements Pattern {
         int direction = this.direction(random);
         this.currentChordNoteIndex = scale.findIndexOfClosestChordNoteInChordNotes(currentPitch);
 
-        if(this.currentChordNoteIndex < limit) {
+        if (this.currentChordNoteIndex < limit) {
             this.currentChordNoteIndex = 2 + this.random.nextInt(limit);
         }
 
-        for(int i = 0; i < 2; i++) {    // Two times eight sixteenth notes
+        for (int i = 0; i < 2; i++) {    // Two times eight sixteenth notes
             notePattern.add(chordNotes.get(this.currentChordNoteIndex));
             notePattern.add(chordNotes.get(this.currentChordNoteIndex - 1));
             notePattern.add(chordNotes.get(this.currentChordNoteIndex - 1) - 1);
@@ -52,7 +52,6 @@ public class Bach implements Pattern {
 
         return this.integersToMidiNotes(notePattern);
     }
-
 
     private int direction(int arraySize, int direction) {
         if (this.currentChordNoteIndex == 2) {

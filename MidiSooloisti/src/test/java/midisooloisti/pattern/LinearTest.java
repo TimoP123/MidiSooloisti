@@ -1,4 +1,3 @@
-
 package midisooloisti.pattern;
 
 import java.util.ArrayList;
@@ -46,27 +45,27 @@ public class LinearTest {
         }
         assertTrue(ok);
     }
-    
+
     @Test
     public void getNotesReturnsOnlyNotesInScaleArea() {
         boolean ok = true;
-        for (MidiNote note: linear.getNotes(scale, 24)) {
+        for (MidiNote note : linear.getNotes(scale, 24)) {
             if (note.getPitch() < this.minLimit || note.getPitch() > this.maxLimit) {
                 ok = false;
             }
         }
         assertTrue(ok);
     }
-    
+
     @Test
     public void notesOnBeatsAreChordNotes() {
         boolean ok = true;
         ArrayList<MidiNote> midiNotes = linear.getNotes(scale, 110);
-        for(int i = 0; i <= 11; i = i + 4) {
+        for (int i = 0; i <= 11; i = i + 4) {
             boolean flag = false;
-            
-            for(int j = 0; j <= 4; j = j + 2) {
-                if(midiNotes.get(i).getPitch() % 12 == notes[j]) {
+
+            for (int j = 0; j <= 4; j = j + 2) {
+                if (midiNotes.get(i).getPitch() % 12 == notes[j]) {
                     flag = true;
                 }
             }
@@ -76,7 +75,7 @@ public class LinearTest {
                 break;
             }
         }
-        
+
         assertTrue(ok);
     }
 }

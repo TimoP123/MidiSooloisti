@@ -16,8 +16,9 @@ import midisooloisti.pattern.Scale;
 import midisooloisti.pattern.TwoOctavesDown;
 
 /**
- *    Main-luokan tehtävänä on käynnistää sovelluksen käyttöliittymä. Kehitysvaiheessa Main-luokka sisältää kuitenkin
- *    vaihtelevan määrän testikoodia.
+ * Main-luokan tehtävänä on käynnistää sovelluksen käyttöliittymä.
+ * Kehitysvaiheessa Main-luokka sisältää kuitenkin vaihtelevan määrän
+ * testikoodia.
  */
 public class Main {
 
@@ -33,11 +34,11 @@ public class Main {
         int[] notes = {0, 2, 3, 5, 7, 8, 11};   //  C harmonic minor
         int[] notes2 = {5, 7, 8, 11, 12, 14, 15};   // 4th
         int[] notes3 = {7, 8, 11, 12, 14, 15, 17};  // 5th
-*/        
+         */
         int[] notes = {0, 2, 4, 5, 7, 9, 11};   //  C major
         int[] notes2 = {5, 7, 9, 11, 12, 14, 16};   // 4th
         int[] notes3 = {7, 9, 11, 12, 14, 16, 17};  // 5th
-        
+
         Scale scale = new Scale(50, 90, notes);
 
         System.out.println(scale);
@@ -73,7 +74,7 @@ public class Main {
             playNoteList(player, pattern);
             printList(pattern);
             currentNote = pattern.get(pattern.size() - 1).getPitch();
-            
+
             index = random.nextInt(patterns.size());
 
             scale.setNotes(notes3);
