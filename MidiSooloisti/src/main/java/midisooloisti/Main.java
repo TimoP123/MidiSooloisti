@@ -15,6 +15,10 @@ import midisooloisti.pattern.Pattern;
 import midisooloisti.pattern.Scale;
 import midisooloisti.pattern.TwoOctavesDown;
 
+/**
+ *    Main-luokan tehtävänä on käynnistää sovelluksen käyttöliittymä. Kehitysvaiheessa Main-luokka sisältää kuitenkin
+ *    vaihtelevan määrän testikoodia.
+ */
 public class Main {
 
     public static void main(String[] args) {

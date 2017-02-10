@@ -11,6 +11,9 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 
+/**
+ *    Player-luokka avaa käytettävän Midi-laitteen ohjelman käyttöön ja soittaa sille listana annetut Midi-nuotit.
+ */
 public class Player {
 
     private String deviceName;

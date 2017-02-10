@@ -45,10 +45,16 @@
                     <targetClasses>
                         <param>midisooloisti.player.MidiNot*</param>
                         <param>midisooloisti.pattern.Scal*</param>
+                        <param>midisooloisti.pattern.Lin*</param>
+                        <param>midisooloisti.pattern.Ch*</param>
+                        <param>midisooloisti.pattern.Tw*</param>
                     </targetClasses>
                     <targetTests>
                         <param>midisooloisti.player.MidiNoteTe*</param>
                         <param>midisooloisti.pattern.Scal*</param>
+                        <param>midisooloisti.pattern.Lin*</param>
+                        <param>midisooloisti.pattern.Ch*</param>
+                        <param>midisooloisti.pattern.Tw*</param>
                     </targetTests>
                 </configuration>
             </plugin>

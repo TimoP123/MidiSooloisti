@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import midisooloisti.player.MidiNote;
 
+/**
+ * Pattern-rajapinta kokoaa alleen joukon luokkia, joiden yhteisenä tehtävänä on
+ * tuottaa tahdin verran kuudestoistaosanuotteja. Kaikkien rajapinnan
+ * toteuttavien luokkien on toteutettava getNotes-metodi, joka palauttaa nuotit
+ * MidiNote-listana. Pattern-rajapinta sisältää myös oletustoteutukset kahdesta
+ * apumetodista kaikkien rajapinnan toteuttavien luokkien käyttöön.
+ */
 public interface Pattern {
 
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch);
