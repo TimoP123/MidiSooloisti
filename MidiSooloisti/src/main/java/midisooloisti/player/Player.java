@@ -86,11 +86,11 @@ public class Player {
         this.tick++;
         this.ticksLeft--;
         if (this.tick == 16) {
-            this.receiver.send(this.notes.get(this.index).noteOff(), tick);
+            this.receiver.send(this.notes.get(this.index).noteOff(), -1);
         } else if (this.ticksLeft <= 0) {
-            this.receiver.send(this.notes.get(this.index).noteOff(), tick);
+            this.receiver.send(this.notes.get(this.index).noteOff(), -1);
             this.index++;
-            this.receiver.send(this.notes.get(this.index).noteOn(), tick);
+            this.receiver.send(this.notes.get(this.index).noteOn(), -1);
             this.ticksLeft = this.notes.get(this.index).length();
         }
     }
@@ -105,6 +105,13 @@ public class Player {
         }
 
         this.receiver.send(soundChange, 0);
+    }
+    
+    public void stop() {
+        this.receiver.send(this.notes.get(this.index).noteOff(), -1);
+        this.tick = 0;
+        this.index = 0;
+        this.ticksLeft = 0;
     }
 
 }

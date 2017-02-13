@@ -4,8 +4,11 @@ import midisooloisti.player.Player;
 import midisooloisti.player.MidiNote;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
+import midisooloisti.logic.SoloLogic;
 import midisooloisti.pattern.Bach;
 import midisooloisti.pattern.ChordDown;
 import midisooloisti.pattern.ChordUp;
@@ -23,18 +26,43 @@ import midisooloisti.pattern.TwoOctavesDown;
 public class Main {
 
     public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        SoloLogic logic = new SoloLogic(200);
+        logic.setScale(50, 90, new int[] {0, 2, 3, 5, 7, 8, 11});
+        logic.setPatterns();
+        SwingUtilities.invokeLater(logic);
+        
+        while(true) {
+            String input = scanner.nextLine();
+            if(input.equals("x")) {
+                logic.stop();
+                break;
+            } else if (input.equals("stop")) {
+                logic.stop();
+            } else if (input.equals("run")) {
+                logic.run();
+            } else {
+                logic.setDelay(Integer.parseInt(input));
+            }
+        }
+        
 
         // This is test code until graphicalInterface is implemented.
         //
         //
+        /*
         Random random = new Random();
         Player player = new Player();
         player.setSound(1, 81);         // Channel 1, Synth lead = 81
+        */
+        
 /*
         int[] notes = {0, 2, 3, 5, 7, 8, 11};   //  C harmonic minor
         int[] notes2 = {5, 7, 8, 11, 12, 14, 15};   // 4th
         int[] notes3 = {7, 8, 11, 12, 14, 15, 17};  // 5th
          */
+/*
         int[] notes = {0, 2, 4, 5, 7, 9, 11};   //  C major
         int[] notes2 = {5, 7, 9, 11, 12, 14, 16};   // 4th
         int[] notes3 = {7, 9, 11, 12, 14, 16, 17};  // 5th
@@ -90,6 +118,7 @@ public class Main {
             currentNote = pattern.get(pattern.size() - 1).getPitch();
 
         }
+*/
 
     }
 
