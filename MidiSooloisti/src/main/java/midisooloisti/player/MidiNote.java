@@ -77,4 +77,9 @@ public class MidiNote {
     public int getPitch() {
         return this.pitch;
     }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
 }

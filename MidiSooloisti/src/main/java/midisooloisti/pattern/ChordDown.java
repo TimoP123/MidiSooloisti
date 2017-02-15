@@ -24,6 +24,16 @@ public class ChordDown implements Pattern {
         this.limit = 4;     // Notes are in groups of four descending notes.
     }
 
+    /**
+     * Metodi muodostaa annetulla asteikolla neljä peräkkäistä neljän nuotin
+     * kuviota, jotka muodostuvat alaspäin kulkevista sointuäänistä.
+     *
+     * @param scale Käytettävä asteikko Scale-oliona.
+     * @param currentPitch Viimeisin soitettu nuotti. Annetaan
+     * Midi-äänenkorkeusarvona.
+     *
+     * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
+     */
     @Override
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch) {
         ArrayList<Integer> chordNotes = scale.getChordNotes();

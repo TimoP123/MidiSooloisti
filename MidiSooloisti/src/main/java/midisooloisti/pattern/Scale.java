@@ -25,6 +25,15 @@ public class Scale {
         this.setNotes(baseValues);
     }
 
+    /**
+     * Metodi laskee parametrina annetun kokonaislukutaulukon perusteella
+     * kaikkien niiden Midi-äänenkorkeuksien arvot, jotka kuuluvat haluttuun
+     * asteikkoon sekä ovat soitettavan äänialueen rajojen sisällä. Arvot
+     * tallennetaan olion sisäisiin asteikko- ja sointuäänilistoihin.
+     *
+     * @param baseValues Kokonaislukutaulukko, joka sisältää asettavan asteikon
+     * äänenkorkeuksien arvot mahdollisimman pieninä lukuina.
+     */
     public void setNotes(int[] baseValues) {
         this.notes.clear();
         this.chordNotes.clear();
@@ -54,6 +63,15 @@ public class Scale {
         return this.chordNotes;
     }
 
+    /**
+     * Metodi palauttaa parametrina annettua nuottia lähimpänä olevan
+     * soitettavan äänialueen sisällä olevan sointuäänen korkeuden.
+     *
+     * @param pitch Tutkittavan nuotin Midi-äänenkorkeus kokonaislukuna.
+     *
+     * @return Tutkittavaa nuottia lähimpänä olevan sointuäänen korkeus
+     * kokonaislukuna.
+     */
     public int closestChordNote(int pitch) {
         if (pitch > this.chordNotes.get(this.chordNotes.size() - 1)) {
             return this.chordNotes.get(this.chordNotes.size() - 1);
@@ -82,6 +100,14 @@ public class Scale {
         return this.chordNotes.get(i);
     }
 
+    /**
+     * Metodi palauttaa parametrina annettun nuotin sävelkorkeutta vastaavan
+     * indeksin, jonka avulla kyseinen nuotti löydetään asteikkoäänilistasta.
+     *
+     * @param pitch Tutkittavan nuotin Midi-äänenkorkeus kokonaislukuna.
+     *
+     * @return Tutkittavan nuotin sävelkorkeuden indeksi asteikkoäänilistassa.
+     */
     public int findIndexOfPitch(int pitch) {
         for (int i = 0; i < this.notes.size(); i++) {
             if (this.notes.get(i) == pitch) {
@@ -91,10 +117,28 @@ public class Scale {
         return 0;
     }
 
+    /**
+     * Metodi palauttaa parametrina annettun nuotin sävelkorkeutta vastaavan
+     * indeksin, jonka avulla kyseistä nuottia lähimpänä oleva sointuääni
+     * löydetään asteikkoäänilistasta.
+     *
+     * @param pitch Tutkittavan nuotin Midi-äänenkorkeus kokonaislukuna.
+     *
+     * @return Tutkittavaa nuottia lähimpänä olevan sointuäänen sävelkorkeuden
+     * indeksi asteikkoäänilistassa.
+     */
     public int findIndexOfClosestChordNote(int pitch) {
         return this.findIndexOfPitch(this.closestChordNote(pitch));
     }
 
+    /**
+     * Metodi palauttaa parametrina annettun nuotin sävelkorkeutta vastaavan
+     * indeksin, jonka avulla kyseinen nuotti löydetään sointuäänilistasta.
+     *
+     * @param pitch Tutkittavan nuotin Midi-äänenkorkeus kokonaislukuna.
+     *
+     * @return Tutkittavan nuotin sävelkorkeuden indeksi sointuäänilistassa.
+     */
     public int findIndexOfPitchInChordNotes(int pitch) {
         for (int i = 0; i < this.chordNotes.size(); i++) {
             if (this.chordNotes.get(i) == pitch) {
@@ -104,6 +148,16 @@ public class Scale {
         return 0;
     }
 
+    /**
+     * Metodi palauttaa parametrina annettun nuotin sävelkorkeutta vastaavan
+     * indeksin, jonka avulla kyseistä nuottia lähimpänä oleva sointuääni
+     * löydetään sointuäänilistasta.
+     *
+     * @param pitch Tutkittavan nuotin Midi-äänenkorkeus kokonaislukuna.
+     *
+     * @return Tutkittavaa nuottia lähimpänä olevan sointuäänen sävelkorkeuden
+     * indeksi sointuäänilistassa.
+     */
     public int findIndexOfClosestChordNoteInChordNotes(int pitch) {
         return this.findIndexOfPitchInChordNotes(this.closestChordNote(pitch));
     }

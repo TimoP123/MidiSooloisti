@@ -13,6 +13,16 @@ import midisooloisti.player.MidiNote;
  */
 public interface Pattern {
 
+    /**
+     * Metodi muodostaa annetun asteikon äänistä nuottilinjan, jonka tarkempi
+     * toteutus on rajapinnan toteuttavan luokan metodin vastuulla.
+     *
+     * @param scale Käytettävä asteikko Scale-oliona.
+     * @param currontPitch Viimeisin soitettu nuotti. Annetaan
+     * Midi-äänenkorkeusarvona.
+     *
+     * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
+     */
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch);
 
     default int direction(Random random) {

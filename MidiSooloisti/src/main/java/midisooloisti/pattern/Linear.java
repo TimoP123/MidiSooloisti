@@ -25,6 +25,17 @@ public class Linear implements Pattern {
         this.currentNoteIndex = 0;
     }
 
+    /**
+     * Metodi muodostaa annetulla asteikolla neljä peräkkäistä neljän nuotin
+     * kuviota, jotka muodostuvat ylös- tai alaspäin kulkevista asteikon
+     * äänistä.
+     *
+     * @param scale Käytettävä asteikko Scale-oliona.
+     * @param currentPitch Viimeisin soitettu nuotti. Annetaan
+     * Midi-äänenkorkeusarvona.
+     *
+     * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
+     */
     @Override
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch) {
         ArrayList<Integer> notes = scale.getNotes();

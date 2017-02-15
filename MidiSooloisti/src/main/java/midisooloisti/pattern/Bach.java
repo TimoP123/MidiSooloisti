@@ -24,6 +24,17 @@ public class Bach implements Pattern {
         this.limit = 3;     // Pattern area is three chord notes
     }
 
+    /**
+     * Metodi muodostaa annetulla asteikolla kaksi peräkkäistä kahdeksan nuotin
+     * kuviota, joiden esikuvana toimii Bachin Cm-preludin kahdeksan ensimmäistä
+     * nuottia.
+     *
+     * @param scale Käytettävä asteikko Scale-oliona.
+     * @param currentPitch Viimeisin soitettu nuotti. Annetaan
+     * Midi-äänenkorkeusarvona.
+     *
+     * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
+     */
     @Override
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch) {
         ArrayList<Integer> chordNotes = scale.getChordNotes();

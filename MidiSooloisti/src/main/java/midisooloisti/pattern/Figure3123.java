@@ -29,6 +29,16 @@ public class Figure3123 implements Pattern {
         this.limit = 3;  // Pattern area is three notes
     }
 
+    /**
+     * Metodi muodostaa annetulla asteikolla neljä peräkkäistä neljän nuotin
+     * kuviota, jotka muodostavat luokan nimen mukaisen (3123) kuvion.
+     *
+     * @param scale Käytettävä asteikko Scale-oliona.
+     * @param currentPitch Viimeisin soitettu nuotti. Annetaan
+     * Midi-äänenkorkeusarvona.
+     *
+     * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
+     */
     @Override
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch) {
         ArrayList<Integer> notes = scale.getNotes();
@@ -61,7 +71,7 @@ public class Figure3123 implements Pattern {
     }
 
     private int direction(int arraySize, int direction) {
-        if (this.currentNoteIndex < limit) {
+        if (this.currentNoteIndex <= limit) {
             return 1;
         } else if (this.currentNoteIndex >= (arraySize - 1)) {
             return -1;
