@@ -58,5 +58,10 @@ public class ChordUpTest {
         }
         assertTrue(ok);
     }
+    
+    @Test
+    public void getNotesReturnsSixteenNotes() {
+        assertEquals(16, chordUp.getNotes(scale, 77).size());
+    }
 
 }
