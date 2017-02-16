@@ -18,6 +18,11 @@ public class ChordUp implements Pattern {
     private Random random;
     private int limit;
 
+    /**
+     * Konstruktori.
+     *
+     * @param random Random.
+     */
     public ChordUp(Random random) {
         this.random = random;
         this.currentChordNoteIndex = 0;
@@ -29,7 +34,8 @@ public class ChordUp implements Pattern {
      * kuviota, jotka muodostuvat ylöspäin kulkevista sointuäänistä.
      *
      * @param scale Käytettävä asteikko Scale-oliona.
-     * @param currentPitch  Viimeisin soitettu nuotti. Annetaan Midi-äänenkorkeusarvona.
+     * @param currentPitch Viimeisin soitettu nuotti. Annetaan
+     * Midi-äänenkorkeusarvona.
      *
      * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
      */

@@ -17,10 +17,8 @@ import midisooloisti.player.MidiNote;
 import midisooloisti.player.Player;
 
 public class SoloLogic implements Runnable {
-
-    private static final int[] minor = {0, 2, 3, 5, 7, 8, 11, 12, 14, 15, 17};
-    private static final int[] major = {0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17};
-
+    private static final int[] MINOR = {0, 2, 3, 5, 7, 8, 11, 12, 14, 15, 17};
+    private static final int[] MAJOR = {0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17};
     private Random random;
     private Timer timer;
     private Player player;
@@ -40,6 +38,10 @@ public class SoloLogic implements Runnable {
     private boolean inMajor;
     private int pLongNotes;
 
+    /**
+     * Konstruktori.
+     * @param delay Nuotin pituus alussa (ms).
+     */
     public SoloLogic(int delay) {
         this.random = new Random();
         this.player = new Player();
@@ -63,7 +65,6 @@ public class SoloLogic implements Runnable {
                     player.forward();
                     tick = 0;
                 }
-
                 if (tick == 0) {
                     notes = getNotes();
                     currentNote = notes.get(notes.size() - 1).getPitch();
@@ -75,7 +76,6 @@ public class SoloLogic implements Runnable {
                 tick++;
             }
         };
-
         this.timer = new Timer(delay, this.timerListener);
     }
 
@@ -93,26 +93,37 @@ public class SoloLogic implements Runnable {
         this.upperLimit = value;
     }
 
+    /**
+     * Metodi vaihtaa käytettävän asteikon duuriksi.
+     */
     public void useMajorScale() {
         this.inMajor = true;
         for (int i = 0; i < 7; i++) {
-            this.notesI[i] = major[i] + this.transpose;
-            this.notesIV[i] = major[i + 3] + this.transpose;
-            this.notesV[i] = major[i + 4] + this.transpose;
+            this.notesI[i] = MAJOR[i] + this.transpose;
+            this.notesIV[i] = MAJOR[i + 3] + this.transpose;
+            this.notesV[i] = MAJOR[i + 4] + this.transpose;
         }
         this.setScaleDegree(this.degree);
     }
 
+    /**
+     * Metodi vaihtaa käytettävän asteikon molliksi.
+     */
     public void useMinorScale() {
         this.inMajor = false;
         for (int i = 0; i < 7; i++) {
-            this.notesI[i] = minor[i] + this.transpose;
-            this.notesIV[i] = minor[i + 3] + this.transpose;
-            this.notesV[i] = minor[i + 4] + this.transpose;
+            this.notesI[i] = MINOR[i] + this.transpose;
+            this.notesIV[i] = MINOR[i + 3] + this.transpose;
+            this.notesV[i] = MINOR[i + 4] + this.transpose;
         }
         this.setScaleDegree(this.degree);
     }
 
+    /**
+     * Metodi transponoi käytettävän asteikon.
+     *
+     * @param transpose Transponoinnin määrä C:stä ylöspäin.
+     */
     public void transpose(int transpose) {
         this.transpose = transpose;
         if (inMajor) {
@@ -122,6 +133,11 @@ public class SoloLogic implements Runnable {
         }
     }
 
+    /**
+     * Metodi asettaa käytettävän sointuasteen.
+     *
+     * @param degree Sointuaste kokonaislukuna 1, 4, tai 5.
+     */
     public void setScaleDegree(int degree) {
         this.degree = degree;
         switch (degree) {
@@ -139,29 +155,34 @@ public class SoloLogic implements Runnable {
         }
     }
 
+    /**
+     * Metodi luo käytettävät patternit.
+     */
     public void setPatterns() {
-        Pattern pattern = new Linear(this.random);
-        Pattern chordUp = new ChordUp(random);
-        Pattern chordDown = new ChordDown(random);
-        Pattern figure3123 = new Figure3123(random);
-        Pattern twoOctavesDown = new TwoOctavesDown(random);
-        Pattern bach = new Bach(random);
-        this.patterns.add(pattern);
-        this.patterns.add(chordUp);
-        this.patterns.add(chordDown);
-        this.patterns.add(figure3123);
-        this.patterns.add(twoOctavesDown);
-        this.patterns.add(bach);
+        this.patterns.add(new Linear(this.random));
+        this.patterns.add(new ChordUp(random));
+        this.patterns.add(new ChordDown(random));
+        this.patterns.add(new Figure3123(random));
+        this.patterns.add(new TwoOctavesDown(random));
+        this.patterns.add(new Bach(random));
     }
 
+    /**
+     * Metodi asettaa ajastimeen uuden viivearvon.
+     *
+     * @param delay Viive millisekunteina.
+     */
     public void setDelay(int delay) {
         this.timer.setDelay(delay);
     }
 
-    public void setpLongNotes(int pLongNotes) {
+    public void setPLongNotes(int pLongNotes) {
         this.pLongNotes = pLongNotes;
     }
 
+    /**
+     * Metodi pysäyttää soolon soittamisen.
+     */
     public void stop() {
         this.tick = 0;
         timer.stop();
@@ -181,5 +202,4 @@ public class SoloLogic implements Runnable {
         }
         return noteList;
     }
-
 }

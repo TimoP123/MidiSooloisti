@@ -15,6 +15,14 @@ public class MidiNote {
     private int channel;
     private int velocity;
 
+    /**
+     * Konstruktori.
+     *
+     * @param pitch Äänenkorkeus.
+     * @param length Nuotin pituus.
+     * @param channel Midi-kanava.
+     * @param velocity Nuotin soittovoimakkuus.
+     */
     public MidiNote(int pitch, int length, int channel, int velocity) {
         this.pitch = limitValue(pitch, 0, 127);
         this.length = limitValue(length, 1, 16); // Must be at least one, maximum is 16.
@@ -36,7 +44,7 @@ public class MidiNote {
      * Metodi muodostaa ShortMessage-olion, jonka avulla saadaan Midi-laite
      * soittamaan yksittäisen nuotin.
      *
-     * @return ShortMessage, joka asettaa nuotin soimaan.
+     * @return ShortMessage joka asettaa nuotin soimaan.
      */
     public ShortMessage noteOn() {
         ShortMessage noteOn = this.midiMessage(true);
@@ -47,7 +55,7 @@ public class MidiNote {
      * Metodi muodostaa ShortMessage-olion, jonka avulla saadaan soiva nuotti
      * sammutettua Midi-laitteelta.
      *
-     * @return ShortMessage, joka sammuttaa nuotin.
+     * @return ShortMessage joka sammuttaa nuotin.
      */
     public ShortMessage noteOff() {
         ShortMessage noteOff = this.midiMessage(false);
@@ -70,7 +78,7 @@ public class MidiNote {
         return null;
     }
 
-    public int length() {
+    public int getLength() {
         return this.length;
     }
 

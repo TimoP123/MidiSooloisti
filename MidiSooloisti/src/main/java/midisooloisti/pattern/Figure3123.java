@@ -23,6 +23,11 @@ public class Figure3123 implements Pattern {
     private Random random;
     private int limit;
 
+    /**
+     * Kontruktori.
+     * 
+     * @param random Random.
+     */
     public Figure3123(Random random) {
         this.random = random;
         this.currentNoteIndex = 0;

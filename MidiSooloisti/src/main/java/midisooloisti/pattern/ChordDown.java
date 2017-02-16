@@ -18,6 +18,11 @@ public class ChordDown implements Pattern {
     private Random random;
     private int limit;
 
+    /**
+     * Konstruktori.
+     *
+     * @param random Random.
+     */
     public ChordDown(Random random) {
         this.random = random;
         this.currentChordNoteIndex = 0;

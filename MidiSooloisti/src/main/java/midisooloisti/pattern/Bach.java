@@ -18,6 +18,11 @@ public class Bach implements Pattern {
     private Random random;
     private int limit;
 
+    /**
+     * Konstruktori.
+     *
+     * @param random Random.
+     */
     public Bach(Random random) {
         this.random = random;
         this.currentChordNoteIndex = 0;

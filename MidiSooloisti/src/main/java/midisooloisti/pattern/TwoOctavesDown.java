@@ -17,6 +17,11 @@ public class TwoOctavesDown implements Pattern {
     private int currentNoteIndex;
     private Random random;
 
+    /**
+     * Konstruktori.
+     * 
+     * @param random Random.
+     */
     public TwoOctavesDown(Random random) {
         this.random = random;
         this.currentNoteIndex = 0;

@@ -17,6 +17,14 @@ public class Scale {
     private ArrayList<Integer> notes;
     private ArrayList<Integer> chordNotes;
 
+    /**
+     * Konstruktori.
+     *
+     * @param lowerLimit Alin käytettävä nuotti.
+     * @param upperLimit Korkein käytettävä nuotti.
+     * @param baseValues Taulukko, jossa asteikon äänet mahdollisimman pieninä
+     * numeroina.
+     */
     public Scale(int lowerLimit, int upperLimit, int[] baseValues) {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;

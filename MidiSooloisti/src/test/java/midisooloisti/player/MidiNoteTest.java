@@ -24,25 +24,25 @@ public class MidiNoteTest {
     @Test
     public void lenghtReturnsCorrectValue() {
         MidiNote note = new MidiNote(65, 2, 1, 80);
-        assertEquals(2, note.length());
+        assertEquals(2, note.getLength());
     }
 
     @Test
     public void lengthMustBeAtLeastOne() {
         MidiNote note = new MidiNote(65, 0, 1, 80);
-        assertEquals(1, note.length());
+        assertEquals(1, note.getLength());
     }
 
     @Test
     public void lenghtWillNotBeNegative() {
         MidiNote note = new MidiNote(65, -3, 1, 80);
-        assertEquals(1, note.length());
+        assertEquals(1, note.getLength());
     }
 
     @Test
     public void maximumLengthIs16() {
         MidiNote note = new MidiNote(65, 20, 1, 80);
-        assertEquals(16, note.length());
+        assertEquals(16, note.getLength());
     }
 
     @Test

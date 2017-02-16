@@ -18,13 +18,19 @@ public interface Pattern {
      * toteutus on rajapinnan toteuttavan luokan metodin vastuulla.
      *
      * @param scale Käytettävä asteikko Scale-oliona.
-     * @param currontPitch Viimeisin soitettu nuotti. Annetaan
+     * @param currentPitch Viimeisin soitettu nuotti. Annetaan
      * Midi-äänenkorkeusarvona.
      *
      * @return ArrayList, joka sisältää 16 kappaletta MidiNote-olioita.
      */
     public ArrayList<MidiNote> getNotes(Scale scale, int currentPitch);
 
+    /**
+     * Suunnan arpova oletusmetodi.
+     *
+     * @param random Random.
+     * @return Palauttaa arvon -1 tai 1.
+     */
     default int direction(Random random) {
         int value = random.nextInt(100);
 
@@ -35,6 +41,13 @@ public interface Pattern {
         return -1;
     }
 
+    /**
+     * Oletusmetodi, joka muuttaa kokonaislukulistan MidiNote-listaksi.
+     *
+     * @param pitch Lista, joka muodostuu Midi-nuottikorkeuksia ilmaisevista
+     * kokonaisluvuista.
+     * @return Lista, joka muodostuu MidiNote-olioista.
+     */
     default ArrayList<MidiNote> integersToMidiNotes(ArrayList<Integer> pitch) {
         ArrayList<MidiNote> notes = new ArrayList<>();
 

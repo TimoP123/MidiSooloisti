@@ -20,6 +20,11 @@ public class Linear implements Pattern {
     private int currentNoteIndex;
     private Random random;
 
+    /**
+     * Konstruktori.
+     *
+     * @param random Random.
+     */
     public Linear(Random random) {
         this.random = random;
         this.currentNoteIndex = 0;

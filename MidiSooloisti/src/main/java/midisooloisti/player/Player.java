@@ -25,6 +25,9 @@ public class Player {
     private int ticksLeft;
     private int index;
 
+    /**
+     * Player-luokan konstruktori.
+     */
     public Player() {
         this.deviceName = "Gervill";    // Default built-in MidiSoftSynthesizer.
         //this.deviceName = "M4x4 [hw:2,0,0]";
@@ -71,13 +74,20 @@ public class Player {
         this.notes = notes;
     }
 
+    /**
+     * Metodi aloittaa uuden tahdin soittamisen.
+     */
     public void begin() {
         this.tick = 0;
         this.index = 0;
         this.receiver.send(this.notes.get(this.index).noteOn(), tick);
-        this.ticksLeft = this.notes.get(this.index).length();
+        this.ticksLeft = this.notes.get(this.index).getLength();
     }
 
+    /**
+     * Metodi siirtyy 1/16-nuotin verran eteenpäin tahdissa ja tarvittaessa
+     * sammuttaa edellisen nuotin ja asettaa seuraavan nuotin soimaan.
+     */
     public void forward() {
         if (this.tick > 16) {
             return;
@@ -91,10 +101,16 @@ public class Player {
             this.receiver.send(this.notes.get(this.index).noteOff(), -1);
             this.index++;
             this.receiver.send(this.notes.get(this.index).noteOn(), -1);
-            this.ticksLeft = this.notes.get(this.index).length();
+            this.ticksLeft = this.notes.get(this.index).getLength();
         }
     }
 
+    /**
+     * Metodi asettaa Midi-soittimen soundin.
+     *
+     * @param channel Midi-kanava.
+     * @param sound Asetettavan soundin numero.
+     */
     public void setSound(int channel, int sound) {
         ShortMessage soundChange = new ShortMessage();
 
@@ -106,7 +122,11 @@ public class Player {
 
         this.receiver.send(soundChange, 0);
     }
-    
+
+    /**
+     * Metodi nollaa tahdin soittamiseen liittyvät muuttujat sekä sammuttaa
+     * soivan Midi-nuotin.
+     */
     public void stop() {
         this.receiver.send(this.notes.get(this.index).noteOff(), -1);
         this.tick = 0;
