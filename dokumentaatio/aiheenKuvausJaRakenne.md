@@ -15,3 +15,11 @@ Ohjelmaan tehty luokka MidiNote vastaa nuottien soittamiseen ja sammuttamiseen t
 **Käyttötarkoitus:** Tämä ohjelma tulee viihdekäyttöön. Sitä voi käyttää bändin kanssa, jolloin tap-tempon avulla saadaan huolehdittua siitä, että kone soittaa samassa tahdissa muun bändin kanssa. Toki voi myös huvin vuoksi laittaa levyjä soimaan ja kokeilla miltä syntikkasoolo kuulostaisi vaikkapa Led Zeppelinin kanssa.
 
 [Luokkakaavio](./luokkakaavio.pdf)
+
+
+**Kahden käyttötapauksen sekvenssikaaviot:**
+
+![Alt text](./Sekvenssikaavio1.png "Sekvenssikaavio 1")
+
+
+![Alt text](./Sekvenssikaavio2.png "Sekvenssikaavio 2")
