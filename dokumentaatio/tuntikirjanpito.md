@@ -15,4 +15,8 @@ Päivä | Tunnit | Kuvaus
 08.02.2017 | 5h | Olemassaolevien koodien parantelua sekä testejä Scale-luokalle.
 09.02.2017 | 4h | Uusia Pattern-rajapinnan toteuttavia luokkia.
 10.02.2017 | 6h | Testejä oikein urakalla ja lisää Javadocia.
+13.02.2017 | 5h | Kaikkea mahdollista mitä tässä vaiheessa voi tehdä.
+14.02.2017 | 3h | Soolologiikan ohjelmointia ja javadoccia.
+15.02.2017 | 4h | Javadoccia ja alustavaa graafiseen käyttöliittymään liittyvää materiaalin tutkimista.
+16.02.2017 | 3h | Sekvenssikaaviot ja viimeiset viikon palautukseen liittyvät säädöt.
 ... | ... | ...
