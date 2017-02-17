@@ -40,8 +40,7 @@ public class SoloLogic implements Runnable {
 
     /**
      * Konstruktori.
-     * @param delay Nuotin pituus alussa (ms).
-     */
+     * @param delay Nuotin pituus alussa (ms). */
     public SoloLogic(int delay) {
         this.random = new Random();
         this.player = new Player();
@@ -54,10 +53,9 @@ public class SoloLogic implements Runnable {
         this.inMajor = true;    // default value
         this.pLongNotes = 0;   // default value
         this.patterns = new ArrayList<>();
-        this.notesI = new int[8];
-        this.notesIV = new int[8];
-        this.notesV = new int[8];
-
+        this.notesI = new int[7];   // 7 is the number of notes in scale
+        this.notesIV = new int[7];
+        this.notesV = new int[7];
         this.timerListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,7 +79,7 @@ public class SoloLogic implements Runnable {
 
     @Override
     public void run() {
-        player.setSound(1, 81); // Default (Saw Lead)
+        this.player.setSound(1, 81); // Default (Saw Lead)
         this.timer.start();
     }
 
@@ -107,8 +105,7 @@ public class SoloLogic implements Runnable {
     }
 
     /**
-     * Metodi vaihtaa käytettävän asteikon molliksi.
-     */
+     * Metodi vaihtaa käytettävän asteikon molliksi. */
     public void useMinorScale() {
         this.inMajor = false;
         for (int i = 0; i < 7; i++) {
@@ -122,8 +119,7 @@ public class SoloLogic implements Runnable {
     /**
      * Metodi transponoi käytettävän asteikon.
      *
-     * @param transpose Transponoinnin määrä C:stä ylöspäin.
-     */
+     * @param transpose Transponoinnin määrä C:stä ylöspäin. */
     public void transpose(int transpose) {
         this.transpose = transpose;
         if (inMajor) {
@@ -185,13 +181,12 @@ public class SoloLogic implements Runnable {
      */
     public void stop() {
         this.tick = 0;
-        timer.stop();
-        player.stop();
+        this.timer.stop();
+        this.player.stop();
     }
 
     private ArrayList<MidiNote> getNotes() {
-        int index = random.nextInt(patterns.size());
-        ArrayList<MidiNote> noteList = patterns.get(index).getNotes(this.scale, currentNote);
+        ArrayList<MidiNote> noteList = patterns.get(random.nextInt(patterns.size())).getNotes(this.scale, currentNote);
         int longNotes = 0;
         for (int i = 0; i < (noteList.size() - 1); i++) {
             if (((i + longNotes) % 2 == 0) && this.random.nextInt(99) > (100 - this.pLongNotes)) {
