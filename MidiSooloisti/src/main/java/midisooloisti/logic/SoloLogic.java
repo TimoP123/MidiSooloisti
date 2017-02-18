@@ -37,6 +37,7 @@ public class SoloLogic implements Runnable {
     private int degree;
     private boolean inMajor;
     private int pLongNotes;
+    private boolean on;
 
     /**
      * Konstruktori.
@@ -81,6 +82,7 @@ public class SoloLogic implements Runnable {
     public void run() {
         this.player.setSound(1, 81); // Default (Saw Lead)
         this.timer.start();
+        this.on = true;
     }
 
     public void setLowerLimit(int value) {
@@ -175,6 +177,15 @@ public class SoloLogic implements Runnable {
     public void setPLongNotes(int pLongNotes) {
         this.pLongNotes = pLongNotes;
     }
+    
+    public boolean toggleOnOff() {
+        if(this.on) {
+            this.stop();
+            return false;
+        }
+        this.run();
+        return true;
+    }
 
     /**
      * Metodi pysäyttää soolon soittamisen.
@@ -183,6 +194,11 @@ public class SoloLogic implements Runnable {
         this.tick = 0;
         this.timer.stop();
         this.player.stop();
+        this.on = false;
+    }
+
+    public int getTranspose() {
+        return transpose;
     }
 
     private ArrayList<MidiNote> getNotes() {

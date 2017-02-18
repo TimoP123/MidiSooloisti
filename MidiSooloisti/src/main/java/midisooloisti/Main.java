@@ -3,6 +3,7 @@ package midisooloisti;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
 import midisooloisti.logic.SoloLogic;
+import midisooloisti.ui.GraphicalInterface;
 
 /**
  * Main-luokan tehtävänä on käynnistää sovelluksen käyttöliittymä.
@@ -12,10 +13,19 @@ import midisooloisti.logic.SoloLogic;
 public class Main {
 
     public static void main(String[] args) {
+        
+        SoloLogic logic = new SoloLogic(90);
+        logic.useMajorScale();
+        logic.setPatterns();
+        SwingUtilities.invokeLater(logic);
+
+        GraphicalInterface ui = new GraphicalInterface(logic);
+        SwingUtilities.invokeLater(ui);
 
         /*
          *  Test code here until the graphical interface is implemented.
          */
+        /*
         Scanner scanner = new Scanner(System.in);
         SoloLogic logic = new SoloLogic(90);
         logic.useMajorScale();
@@ -69,6 +79,7 @@ public class Main {
 
             }
         }
+*/
     }
 
 }
