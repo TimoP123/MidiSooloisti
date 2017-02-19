@@ -41,7 +41,6 @@ public class TransposeButtonListener implements ActionListener {
     }
     
     private String key(int transpose) {
-        System.out.println("TRANSPOSE: " + transpose);
         String key = "";
         switch(transpose) {
             case 0:

@@ -14,7 +14,7 @@ import midisooloisti.pattern.Pattern;
 import midisooloisti.pattern.Scale;
 import midisooloisti.pattern.TwoOctavesDown;
 import midisooloisti.player.MidiNote;
-import midisooloisti.player.Player;
+import midisooloisti.player.Player;;
 
 public class SoloLogic implements Runnable {
     private static final int[] MINOR = {0, 2, 3, 5, 7, 8, 11, 12, 14, 15, 17};
@@ -38,7 +38,7 @@ public class SoloLogic implements Runnable {
     private boolean inMajor;
     private int pLongNotes;
     private boolean on;
-
+    
     /**
      * Konstruktori.
      * @param delay Nuotin pituus alussa (ms). */
@@ -84,7 +84,7 @@ public class SoloLogic implements Runnable {
         this.timer.start();
         this.on = true;
     }
-
+    
     public void setLowerLimit(int value) {
         this.lowerLimit = value;
     }

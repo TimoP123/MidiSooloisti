@@ -6,10 +6,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import midisooloisti.logic.SoloLogic;
@@ -71,7 +74,6 @@ public class GraphicalInterface implements Runnable {
         // Label for the area
         JLabel transposeLabel = new JLabel("Sävellaji");
         transposeLabel.setFont(new Font("Consolas", Font.BOLD, 18));
-        transposeLabel.setBackground(Color.BLUE);
         transposeLabel.setAlignmentX(0.5f);
         
         // Label for the key.
@@ -99,21 +101,106 @@ public class GraphicalInterface implements Runnable {
         transposeArea.add(transpose);
         
         
+        // Scale selection area
+        // Label
+        JLabel scaleLabel = new JLabel("Asteikko");
+        scaleLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        scaleLabel.setAlignmentX(0.5f);
+        // Button group
+        JRadioButton major = new JRadioButton("Duuri");
+        major.setFont(new Font("Consolas", Font.BOLD, 16));
+        major.setAlignmentX(0.5f);
+        JRadioButton minor = new JRadioButton("Molli");
+        minor.setFont(new Font("Consolas", Font.BOLD, 16));
+        minor.setAlignmentX(0.58f);
+        ButtonGroup scaleButtons = new ButtonGroup();
+        scaleButtons.add(major);
+        scaleButtons.add(minor);
+        major.setSelected(true);
+        // Action Listener
+        ScaleButtonListener scaleListener = new ScaleButtonListener(this.logic, major, minor);
+        major.addActionListener(scaleListener);
+        minor.addActionListener(scaleListener);
+        // Panel
+        JPanel scaleArea = new JPanel();
+        scaleArea.setLayout(new BoxLayout(scaleArea, BoxLayout.Y_AXIS));
+        scaleArea.add(scaleLabel);
+        scaleArea.add(major);
+        scaleArea.add(minor);
+        
+        
+        
+        // Scale Degree selection area
+        // Label
+        JLabel degreeAreaLabel = new JLabel("Sointuaste");
+        degreeAreaLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        degreeAreaLabel.setAlignmentX(0.5f);
+        // Label for the degree
+        JLabel degreeLabel = new JLabel("I");
+        degreeLabel.setFont(new Font("Caladea", Font.BOLD, 30));
+        degreeLabel.setAlignmentX(0.5f);
+        // Panel for transpose buttons
+        JPanel degree = new JPanel(new GridLayout(1, 3));
+        JButton degreeI = new JButton("I");
+        degreeI.setFont(new Font("Caladea", Font.BOLD, 26));
+        JButton degreeIV = new JButton("IV");
+        degreeIV.setFont(new Font("Caladea", Font.BOLD, 26));
+        JButton degreeV = new JButton("V");
+        degreeV.setFont(new Font("Caladea", Font.BOLD, 26));
+        degree.add(degreeI);
+        degree.add(degreeIV);
+        degree.add(degreeV);
+        
+        JPanel degreeArea = new JPanel();
+        degreeArea.setLayout(new BoxLayout(degreeArea, BoxLayout.Y_AXIS));
+        degreeArea.add(degreeAreaLabel);
+        degreeArea.add(degreeLabel);
+        degreeArea.add(degree);
+        
+        
+        
+        // Note density
+        // Label
+        JLabel densityLabel = new JLabel("Nuottitiheys");
+        densityLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        densityLabel.setAlignmentX(0.5f);
+        // Value label
+        JLabel densityValue = new JLabel("100");
+        densityValue.setFont(new Font("Consolas", Font.BOLD, 16));
+        densityValue.setAlignmentX(0.5f);
+        // Slider
+        JSlider densitySlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 100);
+        // Change Listener
+        DensitySliderListener densityListener = new DensitySliderListener(logic, densityValue, densitySlider);
+        densitySlider.addChangeListener(densityListener);
+        
+        JPanel densityArea = new JPanel();
+        densityArea.setLayout(new BoxLayout(densityArea, BoxLayout.Y_AXIS));
+        densityArea.add(densityLabel);
+        densityArea.add(densityValue);
+        densityArea.add(densitySlider);
+
+        
+
+        
+        
         
         container.add(name);
         container.add(empty);
         container.add(onOff);
         
         container.add(transposeArea);
-        container.add(new JButton("Moi"));
-        container.add(new JButton("Moi"));
+        container.add(scaleArea);
+        container.add(degreeArea);
         
         container.add(new JButton("Moi"));
-        container.add(new JButton("Moi"));
+        container.add(densityArea);
         container.add(exit);
     }
     
     public JFrame getFrame() {
         return frame;
     }
+    
+    
 }
