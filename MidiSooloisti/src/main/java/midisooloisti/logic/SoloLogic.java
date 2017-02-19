@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 import midisooloisti.pattern.Bach;
 import midisooloisti.pattern.ChordDown;
@@ -213,4 +214,5 @@ public class SoloLogic implements Runnable {
         }
         return noteList;
     }
+
 }

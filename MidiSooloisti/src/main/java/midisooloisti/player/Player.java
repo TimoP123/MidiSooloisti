@@ -10,6 +10,7 @@ import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
+import javax.swing.JLabel;
 
 /**
  * Player-luokka avaa käytettävän Midi-laitteen ohjelman käyttöön ja soittaa
@@ -133,5 +134,4 @@ public class Player {
         this.index = 0;
         this.ticksLeft = 0;
     }
-
 }
