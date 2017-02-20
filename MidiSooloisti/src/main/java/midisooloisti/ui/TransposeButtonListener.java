@@ -1,4 +1,3 @@
-
 package midisooloisti.ui;
 
 import java.awt.event.ActionEvent;
@@ -7,9 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
-
 public class TransposeButtonListener implements ActionListener {
-    
+
     private SoloLogic logic;
     private JButton transposeDown;
     private JButton transposeUp;
@@ -25,24 +23,30 @@ public class TransposeButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         int transpose = this.logic.getTranspose();
-        if(e.getSource() == transposeDown) {
+        if (e.getSource() == transposeDown) {
             transpose--;
-            if(transpose < 0) {
+            if (transpose < 0) {
                 transpose = 11;
             }
         } else {
             transpose++;
-            if(transpose > 11) {
+            if (transpose > 11) {
                 transpose = 0;
             }
         }
         this.logic.transpose(transpose);
-        this.key.setText(this.key(transpose));
+        String keyText = this.key(transpose);
+
+        if (!this.logic.isInMajor()) {
+            keyText += "m";
+        }
+
+        this.key.setText(keyText);
     }
-    
+
     private String key(int transpose) {
         String key = "";
-        switch(transpose) {
+        switch (transpose) {
             case 0:
                 key = "C";
                 break;
@@ -84,5 +88,5 @@ public class TransposeButtonListener implements ActionListener {
         }
         return key;
     }
-    
+
 }

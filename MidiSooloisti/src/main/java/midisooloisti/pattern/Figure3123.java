@@ -25,7 +25,7 @@ public class Figure3123 implements Pattern {
 
     /**
      * Kontruktori.
-     * 
+     *
      * @param random Random.
      */
     public Figure3123(Random random) {
@@ -53,7 +53,7 @@ public class Figure3123 implements Pattern {
         this.currentNoteIndex = scale.findIndexOfClosestChordNote(currentPitch);
 
         if (this.currentNoteIndex < limit) {
-            this.currentNoteIndex = scale.findIndexOfClosestChordNote(currentPitch + limit);
+            this.currentNoteIndex = limit;
         }
 
         for (int i = 0; i < 3; i++) {

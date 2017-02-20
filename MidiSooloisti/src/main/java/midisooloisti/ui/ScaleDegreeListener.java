@@ -1,4 +1,3 @@
-
 package midisooloisti.ui;
 
 import java.awt.event.ActionEvent;
@@ -7,9 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
-
 public class ScaleDegreeListener implements ActionListener {
-    
+
     private SoloLogic logic;
     private JLabel degreeLabel;
     private JButton degreeI;
@@ -26,10 +24,10 @@ public class ScaleDegreeListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == degreeI) {
+        if (e.getSource() == degreeI) {
             logic.setScaleDegree(1);
             degreeLabel.setText("I");
-        } else if(e.getSource() == degreeIV) {
+        } else if (e.getSource() == degreeIV) {
             logic.setScaleDegree(4);
             degreeLabel.setText("IV");
         } else {
@@ -37,5 +35,5 @@ public class ScaleDegreeListener implements ActionListener {
             degreeLabel.setText("V");
         }
     }
-    
+
 }

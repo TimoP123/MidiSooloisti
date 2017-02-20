@@ -1,4 +1,3 @@
-
 package midisooloisti.ui;
 
 import javax.swing.JLabel;
@@ -8,7 +7,7 @@ import javax.swing.event.ChangeListener;
 import midisooloisti.logic.SoloLogic;
 
 public class DensitySliderListener implements ChangeListener {
-    
+
     private SoloLogic logic;
     private JLabel valueLabel;
     private JSlider slider;
@@ -21,10 +20,10 @@ public class DensitySliderListener implements ChangeListener {
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        if(!slider.getValueIsAdjusting()) {
+        if (!slider.getValueIsAdjusting()) {
             this.logic.setPLongNotes(100 - slider.getValue());
         }
         this.valueLabel.setText("" + slider.getValue());
     }
-    
+
 }

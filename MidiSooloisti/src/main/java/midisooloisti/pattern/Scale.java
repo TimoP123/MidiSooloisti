@@ -169,25 +169,4 @@ public class Scale {
     public int findIndexOfClosestChordNoteInChordNotes(int pitch) {
         return this.findIndexOfPitchInChordNotes(this.closestChordNote(pitch));
     }
-
-    @Override
-    public String toString() {
-        String s = "Asteikon äänet:\n";
-        s += printableList(this.notes);
-        s += "Sointuäänet:\n";
-        s += printableList(this.chordNotes);
-        return s;
-    }
-
-    private String printableList(ArrayList<Integer> list) {
-        String s = "";
-        for (int i = 0; i < list.size(); i++) {
-            s += list.get(i);
-            if (i < (list.size() - 1)) {
-                s += ", ";
-            }
-        }
-        s += "\n";
-        return s;
-    }
 }

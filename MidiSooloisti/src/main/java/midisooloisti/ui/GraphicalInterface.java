@@ -122,7 +122,7 @@ public class GraphicalInterface implements Runnable {
         scaleButtons.add(minor);
         major.setSelected(true);
         // Action Listener
-        ScaleButtonListener scaleListener = new ScaleButtonListener(this.logic, major, minor);
+        ScaleButtonListener scaleListener = new ScaleButtonListener(this.logic, major, minor, key);
         major.addActionListener(scaleListener);
         minor.addActionListener(scaleListener);
         // Panel
@@ -182,22 +182,23 @@ public class GraphicalInterface implements Runnable {
         tempoSet.add(tempoDown);
         tempoSet.add(tempoUp);
         // ActionListener
-        TempoButtonListener tempoListener = new TempoButtonListener(this.logic, tempoValueLabel, tempoDown, tempoUp, tempo);
+        TempoButtonListener tempoListener = new TempoButtonListener(this.logic, tempoValueLabel, tempoDown, tempoUp, this);
         tempoDown.addActionListener(tempoListener);
         tempoUp.addActionListener(tempoListener);
-        
+
         // Panel
         JPanel tempoArea = new JPanel();
         tempoArea.setLayout(new BoxLayout(tempoArea, BoxLayout.Y_AXIS));
         tempoArea.add(tempoAreaLabel);
         tempoArea.add(tempoValueLabel);
         tempoArea.add(tempoSet);
-        
-        
+
         // TapTempo Button
         JButton tapTempo = new JButton("Tap tempo");
         tapTempo.setFont(new Font("Caladea", Font.BOLD, 22));
-        
+        // ActionListener
+        TapTempoListener tapListener = new TapTempoListener(logic, tempoValueLabel, tapTempo, this);
+        tapTempo.addActionListener(tapListener);
 
         // Note density
         // Label
@@ -224,11 +225,11 @@ public class GraphicalInterface implements Runnable {
         container.add(name);
         container.add(scaleArea);
         container.add(densityArea);
-        
+
         container.add(tempoArea);
         container.add(transposeArea);
         container.add(degreeArea);
-        
+
         container.add(tapTempo);
         container.add(onOff);
         container.add(exit);
@@ -236,6 +237,14 @@ public class GraphicalInterface implements Runnable {
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
+
+    public int getTempo() {
+        return tempo;
     }
 
 }

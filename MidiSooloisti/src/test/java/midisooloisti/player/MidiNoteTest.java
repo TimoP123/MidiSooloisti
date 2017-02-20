@@ -44,6 +44,13 @@ public class MidiNoteTest {
         MidiNote note = new MidiNote(65, 20, 1, 80);
         assertEquals(16, note.getLength());
     }
+    
+    @Test
+    public void setLengthWorks() {
+        MidiNote note = new MidiNote(65, 1, 1, 80);
+        note.setLength(3);
+        assertEquals(3, note.getLength());
+    }
 
     @Test
     public void rightChannelInMidiMessage() {

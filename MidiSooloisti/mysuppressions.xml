@@ -6,5 +6,13 @@
 
 <suppressions>
     <suppress files="Main.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="Tiedostosi2.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="DensitySliderListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ExitButtonListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="GraphicalInterface.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="OnOffButtonListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ScaleButtonListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ScaleDegreeListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="TapTempoListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="TempoButtonListener.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="TransposeButtonListener.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

@@ -19,4 +19,7 @@ Päivä | Tunnit | Kuvaus
 14.02.2017 | 3h | Soolologiikan ohjelmointia ja javadoccia.
 15.02.2017 | 4h | Javadoccia ja alustavaa graafiseen käyttöliittymään liittyvää materiaalin tutkimista.
 16.02.2017 | 3h | Sekvenssikaaviot ja viimeiset viikon palautukseen liittyvät säädöt.
+18.02.2017 | 3h | Käyttöliittymän koodausta.
+19.02.2017 | 3h | Käyttöliittymän koodausta.
+20.02.2017 | 3h | Käyttöliittymän ja testien viimeistelyä.
 ... | ... | ...

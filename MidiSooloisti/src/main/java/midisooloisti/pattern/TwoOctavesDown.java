@@ -41,11 +41,7 @@ public class TwoOctavesDown implements Pattern {
         ArrayList<Integer> notes = scale.getNotes();
         ArrayList<Integer> notePattern = new ArrayList<>();
 
-        if (notes.size() < 16) {
-            this.currentNoteIndex = notes.size() - 1;
-        } else {
-            this.currentNoteIndex = random.nextInt(notes.size() - 15) + 14;
-        }
+        this.currentNoteIndex = random.nextInt(Math.abs(notes.size() - 15)) + 14;
 
         for (int i = 0; i < 16; i++) {
 

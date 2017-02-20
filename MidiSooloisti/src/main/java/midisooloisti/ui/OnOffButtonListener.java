@@ -17,7 +17,7 @@ public class OnOffButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(this.logic.toggleOnOff()) {
+        if (this.logic.toggleOnOff()) {
             this.onOff.setText("PYSÄYTÄ");
         } else {
             this.onOff.setText("SOITA");
