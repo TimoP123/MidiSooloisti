@@ -46,6 +46,16 @@ public class GraphicalInterface implements Runnable {
     }
 
     private void createComponents(Container container) {
+        Font consolas16 = new Font("Consolas", Font.BOLD, 16);
+        Font consolas18 = new Font("Consolas", Font.BOLD, 18);
+        Font consolas20 = new Font("Consolas", Font.BOLD, 20);
+        Font consolas24 = new Font("Consolas", Font.BOLD, 24);
+        Font consolas26 = new Font("Consolas", Font.BOLD, 26);
+        Font consolas30 = new Font("Consolas", Font.BOLD, 30);
+        Font caladea22 = new Font("Caladea", Font.BOLD, 22);
+        Font caladea26 = new Font("Caladea", Font.BOLD, 26);
+        Font caladea30 = new Font("Caladea", Font.BOLD, 30);
+        
         GridLayout layout = new GridLayout(3, 3);
         layout.setHgap(4);
         layout.setVgap(4);
@@ -53,7 +63,7 @@ public class GraphicalInterface implements Runnable {
 
         // Name
         JLabel name = new JLabel("MidiSooloisti");
-        name.setFont(new Font("Consolas", Font.BOLD, 24));
+        name.setFont(consolas24);
         name.setForeground(Color.BLUE);
         name.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -62,7 +72,7 @@ public class GraphicalInterface implements Runnable {
 
         // ExitButton
         JButton exit = new JButton("l o p e t a");
-        exit.setFont(new Font("Consolas", Font.BOLD, 18));
+        exit.setFont(consolas18);
         exit.setForeground(Color.white);
         exit.setBackground(Color.darkGray);
         ExitButtonListener exitListener = new ExitButtonListener();
@@ -71,27 +81,27 @@ public class GraphicalInterface implements Runnable {
         // Solo on/off button
         JButton onOff = new JButton();
         onOff.setText("PYSÄYTÄ");
-        onOff.setFont(new Font("Consolas", Font.BOLD, 20));
+        onOff.setFont(consolas20);
         OnOffButtonListener onOffListener = new OnOffButtonListener(this.logic, onOff);
         onOff.addActionListener(onOffListener);
 
         // Transpose panel
         // Label for the area
         JLabel transposeLabel = new JLabel("Sävellaji");
-        transposeLabel.setFont(new Font("Consolas", Font.BOLD, 18));
+        transposeLabel.setFont(consolas18);
         transposeLabel.setAlignmentX(0.5f);
 
         // Label for the key.
         JLabel key = new JLabel("C");
-        key.setFont(new Font("Consolas", Font.BOLD, 30));
+        key.setFont(consolas30);
         key.setAlignmentX(0.5f);
 
         // Panel for transpose buttons
         JPanel transpose = new JPanel(new GridLayout(1, 2));
         JButton transposeDown = new JButton("-");
-        transposeDown.setFont(new Font("Consolas", Font.BOLD, 26));
+        transposeDown.setFont(consolas26);
         JButton transposeUp = new JButton("+");
-        transposeUp.setFont(new Font("Consolas", Font.BOLD, 26));
+        transposeUp.setFont(consolas26);
         transpose.add(transposeDown);
         transpose.add(transposeUp);
         // ActionListener for transpose buttons
@@ -108,14 +118,14 @@ public class GraphicalInterface implements Runnable {
         // Scale selection area
         // Label
         JLabel scaleLabel = new JLabel("Asteikko");
-        scaleLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        scaleLabel.setFont(consolas20);
         scaleLabel.setAlignmentX(0.5f);
         // Button group
         JRadioButton major = new JRadioButton("Duuri");
-        major.setFont(new Font("Consolas", Font.BOLD, 16));
+        major.setFont(consolas16);
         major.setAlignmentX(0.5f);
         JRadioButton minor = new JRadioButton("Molli");
-        minor.setFont(new Font("Consolas", Font.BOLD, 16));
+        minor.setFont(consolas16);
         minor.setAlignmentX(0.58f);
         ButtonGroup scaleButtons = new ButtonGroup();
         scaleButtons.add(major);
@@ -135,20 +145,20 @@ public class GraphicalInterface implements Runnable {
         // Scale Degree selection area
         // Label
         JLabel degreeAreaLabel = new JLabel("Sointuaste");
-        degreeAreaLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        degreeAreaLabel.setFont(consolas20);
         degreeAreaLabel.setAlignmentX(0.5f);
         // Label for the degree
         JLabel degreeLabel = new JLabel("I");
-        degreeLabel.setFont(new Font("Caladea", Font.BOLD, 30));
+        degreeLabel.setFont(caladea30);
         degreeLabel.setAlignmentX(0.5f);
-        // Panel for transpose buttons
+        // Panel for transpose buttonsFont("Caladea", Font.BOLD, 30)
         JPanel degree = new JPanel(new GridLayout(1, 3));
         JButton degreeI = new JButton("I");
-        degreeI.setFont(new Font("Caladea", Font.BOLD, 26));
+        degreeI.setFont(caladea26);
         JButton degreeIV = new JButton("IV");
-        degreeIV.setFont(new Font("Caladea", Font.BOLD, 26));
+        degreeIV.setFont(caladea26);
         JButton degreeV = new JButton("V");
-        degreeV.setFont(new Font("Caladea", Font.BOLD, 26));
+        degreeV.setFont(caladea26);
         degree.add(degreeI);
         degree.add(degreeIV);
         degree.add(degreeV);
@@ -167,18 +177,18 @@ public class GraphicalInterface implements Runnable {
         // Tempo Area
         // TempoAreaLabel
         JLabel tempoAreaLabel = new JLabel("Tempo");
-        tempoAreaLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        tempoAreaLabel.setFont(consolas20);
         tempoAreaLabel.setAlignmentX(0.5f);
         // TempoAreaLabel
         JLabel tempoValueLabel = new JLabel("" + tempo);
-        tempoValueLabel.setFont(new Font("Consolas", Font.BOLD, 26));
+        tempoValueLabel.setFont(consolas26);
         tempoValueLabel.setAlignmentX(0.5f);
         // Panel for tempo up and down buttons
         JPanel tempoSet = new JPanel(new GridLayout(1, 2));
         JButton tempoDown = new JButton("-");
-        tempoDown.setFont(new Font("Caladea", Font.BOLD, 26));
+        tempoDown.setFont(caladea26);
         JButton tempoUp = new JButton("+");
-        tempoUp.setFont(new Font("Caladea", Font.BOLD, 26));
+        tempoUp.setFont(caladea26);
         tempoSet.add(tempoDown);
         tempoSet.add(tempoUp);
         // ActionListener
@@ -195,7 +205,7 @@ public class GraphicalInterface implements Runnable {
 
         // TapTempo Button
         JButton tapTempo = new JButton("Tap tempo");
-        tapTempo.setFont(new Font("Caladea", Font.BOLD, 22));
+        tapTempo.setFont(caladea22);
         // ActionListener
         TapTempoListener tapListener = new TapTempoListener(logic, tempoValueLabel, tapTempo, this);
         tapTempo.addActionListener(tapListener);
@@ -203,11 +213,11 @@ public class GraphicalInterface implements Runnable {
         // Note density
         // Label
         JLabel densityLabel = new JLabel("Nuottitiheys");
-        densityLabel.setFont(new Font("Consolas", Font.BOLD, 20));
+        densityLabel.setFont(consolas20);
         densityLabel.setAlignmentX(0.5f);
         // Value label
         JLabel densityValue = new JLabel("100");
-        densityValue.setFont(new Font("Consolas", Font.BOLD, 16));
+        densityValue.setFont(consolas16);
         densityValue.setAlignmentX(0.5f);
         // Slider
         JSlider densitySlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 100);
