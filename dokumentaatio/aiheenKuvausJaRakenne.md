@@ -23,3 +23,18 @@ Ohjelmaan tehty luokka MidiNote vastaa nuottien soittamiseen ja sammuttamiseen t
 
 
 ![Alt text](./Sekvenssikaavio2.png "Sekvenssikaavio 2")
+
+
+**Ohjelman rakennekuvaus**
+
+Ohjelman käyttöliittymä tarjoaa toiminnot tempon, sävellajin, sointuasteen ja nuottitiheyden valintoihin. Lisäksi voidaan valita soitetaanko duurista vai mollista.
+
+Midinuottien soittamiseen käytetään Javan MidiSystem-luokan tarjoamia palveluita. Ohjelman luokka Player luo MidiDevice-olion sekä sen tarvitseman Receiver-luokan. Player-luokka saa soitettavat nuotit MidiNote-oliolistana SoloLogic-luokalta. MidiNote-oliot sisältävät kaikki tarvittavat tiedot soitettavasta nuotista (korkeus, kesto, Midi-kanava ja voimakkuus) ja tarjoavat myös metodit nuottien soittamiseen ja sammuttamiseen tarvittavien ShortMessage-viestien muodostamiseen.
+
+Sooloa generoidaan tahdin verran kerrallaan käyttöliittymän parametrien mukaan. Rajapinta Pattern määrittelee oletusmetodin getNotes(int currentNote), jonka toteuttavia luokkia on ohjelmassa kuusi erilaista. Kukin niistä tuottaa soolokuvioita eri metodeilla ja näiden kuvioiden satunnaisella vaihtelemisella saadaan sooloon riittävästi vaihtelua. Kukin Pattern-rajapinnan toteuttavista luokista sisältää myös enemmän tai vähemmän satunnaisuutta. Sooloa tuotetaan esimerkiksi soittamalla lineaarisesti asteikko pitkin kulkevia neljän nuotin ryhmiä, jotka liikkuvat ylös- tai alaspäin, sointuarpeggioilla tai vaikkapa Bachin Cm-preludin alkusävelillä.
+
+Generoitavan soolon yhteys soitettavaan sävellajiin ja sointuasteeseen syntyy siten, että soolon iskuille pyritään sijoittamaan jokin aktiivisena olevan soinnun ääni. Tässä ei jokaisen patternin tapauksessa olla aivan ehdottoman tarkkoja, koska ei musiikkia muutenkaan pidä rajoittaa liian tiukoilla säännöillä. Em. säännöstä pidetään kuitenkin sen verran kiinni, että sooloa kuunnellessaan voi samalla aistia, mikä kyseessä oleva sointu on.
+
+Pattern-rajapinnan toteuttavat luokat hyödyntävät äänivalinnoissaan Scale-luokan tarjoamia metodeja. Scale tuntee käyttöliittymästä valitun asteikon ja pystyy kertomaan esim. annettua äänenkorkeutta lähimpänä löytyvän sointuäänen sijainnin asteikkotaulukossa, joka muodostuu ko. asteikkoon kuuluvista Midi-äänenkorkeuksista. Jos käyttöliittymästä vaihdetaan asteikkoa duurista molliin tai sävellajia, päivitetään Scale-luokan asteikkotaulukot vastaavasti. Sointuasteen muutokset näkyvät Scale-luokalle myös uutena asteikkona vaikka musiikin teorian tasolla kyse onkin vain siitä, että samaa asteikkoa käsitellään siten, että sen alku- ja loppukohtia siirretään vaikkapa neljä nuottia eteenpäin. Tällä tavoin itse soolopatternien tuottamisen logiikan ei tarvitse huomioida erikseen sitä, millä tavalla sävellajia tai sointuastetta on muutettu.
+
+SoloLogic-luokka hallinnoi kaikkea edellä mainittua ja se tarjoaa graagista käyttöliittymää varten metodeja niin arvojen syöttämiseen kuin niiden lukemiseenkin. MidiSooloisti toimii myös ilman käyttöliittymäluokkaa. Käyttöliittymän merkitys onkin vain soolon tuottamiseen liittyvien parametrien muuttamisessa.
