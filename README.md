@@ -8,6 +8,8 @@ Midi-syntetisaattorin ja ohjelman välisessä kommunikaatiossa käytetään Java
 
 [Aiheen kuvaus](./dokumentaatio/aiheenKuvausJaRakenne.md)
 
+[Käyttöohjeet](./dokumentaatio/käyttöohjeet.md)
+
 [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
 
 [Luokkakaavio](./dokumentaatio/luokkakaavio.pdf)
