@@ -15,7 +15,7 @@ Sävellajia voidaan nostaa ja laskea 'Sävellaji'-tekstin alapuolella olevista '
 Midisooloistin käynnistyessä on oletuksena valittuna I-sointuaste. Sointuasteiden välillä voidaan vaihtaa keskirivin oikeasta reunasta löytyvillä valintanäppäimillä. Sointuastevaihtoehdot ovat I-, IV- ja V-aste.
 
 ###Nuottitiheyden muuttaminen###
-Sooloistin käynnistyessä ohjelma soittaa pelkkiä kuudestoistaosanuotteja. Nuottitiheys-sliderin avulla voidaan kuudestoistaosanuottien ja kahdeksasosanuottien määrien välistä suhdetta muuttaa. Sliderin ollessa vasemmassa reunassa, soittaa MidiSooloisti vain kahdeksasosanuotteja ja kuukdestoistaosanuottien suhteellinen osuus kasvaa sitä mukaa, kun slideria siirretään oikealle päin.
+Sooloistin käynnistyessä ohjelma soittaa pelkkiä kuudestoistaosanuotteja. Nuottitiheys-sliderin avulla voidaan kuudestoistaosanuottien ja kahdeksasosanuottien määrien välistä suhdetta muuttaa. Sliderin ollessa vasemmassa reunassa, soittaa MidiSooloisti vain kahdeksasosanuotteja ja kuudestoistaosanuottien suhteellinen osuus kasvaa sitä mukaa, kun slideria siirretään oikealle päin.
 
 ###Ohjelmasta poistuminen###
 Käyttöliittymäruudun oikeassa alanurkassa olevan 'lopeta'-nappulan avulla voidaan ohjelman suoritus lopettaa.
