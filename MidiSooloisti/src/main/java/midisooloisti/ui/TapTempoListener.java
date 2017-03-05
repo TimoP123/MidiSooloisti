@@ -6,6 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on kuunnella tap-tempo nappulan painalluksia ja
+ * asettaa soolon tempo painallusten mukaan.
+ */
 public class TapTempoListener implements ActionListener {
 
     private SoloLogic logic;

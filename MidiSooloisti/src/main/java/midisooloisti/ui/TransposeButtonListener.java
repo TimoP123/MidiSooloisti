@@ -6,6 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on toteuttaa sävellajia muuttavien nappuloiden sekä
+ * sävellajia ilmaisevan tekstikentän toiminnallisuus.
+ */
 public class TransposeButtonListener implements ActionListener {
 
     private SoloLogic logic;

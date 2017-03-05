@@ -6,6 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on toteuttaa tempoa muuttavien '+'- ja '-'-nappuloiden
+ * toiminnallisuus.
+ */
 public class TempoButtonListener implements ActionListener {
 
     private SoloLogic logic;

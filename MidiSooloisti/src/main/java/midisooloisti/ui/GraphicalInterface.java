@@ -20,6 +20,9 @@ import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on toteuttaa MidiSooloistin graafinen käyttöliittymä.
+ */
 public class GraphicalInterface implements Runnable {
 
     private JFrame frame;

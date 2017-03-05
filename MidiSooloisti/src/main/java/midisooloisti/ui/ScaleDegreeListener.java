@@ -6,6 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on kuunnella sointuastetta vaihtavien nappuloiden 
+ * painalluksia ja välittää tieto niistä soologiikalle.
+ */
 public class ScaleDegreeListener implements ActionListener {
 
     private SoloLogic logic;

@@ -6,6 +6,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on kuunnella duuri- ja mollinappuloiden painalluksia
+ * sekä välittää tieto niistä soolologiikalle.
+ */
 public class ScaleButtonListener implements ActionListener {
 
     private SoloLogic logic;

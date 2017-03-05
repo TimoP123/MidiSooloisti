@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on kuunnella onOff-nappulaa ja käynnnistää/sammuttaa
+ * soolo.
+ */
 public class OnOffButtonListener implements ActionListener {
 
     private SoloLogic logic;

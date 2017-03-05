@@ -6,6 +6,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import midisooloisti.logic.SoloLogic;
 
+/**
+ * Luokan tehtävänä on kuunnella nuottitiheys-sliderin muutoksia ja
+ * välittää tieto niistä soolologiikalle.
+ */
 public class DensitySliderListener implements ChangeListener {
 
     private SoloLogic logic;
