@@ -17,3 +17,6 @@ Midi-syntetisaattorin ja ohjelman välisessä kommunikaatiossa käytetään Java
 [pit-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/dokumentaatio/pit-raportti/index.html)
 
 [checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
+
+
+[javadoc](https://htmlpreview.github.io/?https://github.com/TimoP123/MidiSooloisti/blob/master/javadoc/index.html)
