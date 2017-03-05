@@ -11,4 +11,4 @@ Player-luokan testaaminen tuntui tähän mennessä hankittuun osaamiseen nähden
 
 **SoloLogic-luokka**
 
-
+Soolologiikkaluokan testauksessa olisi pitänyt osata ottaa testeissä huomioon satunnaisesti käyttäytyvien patternien toiminta. Tähän ei rahkeet riittäneet vielä, joten luokka jäi JUnit-testien osalta testaamatta. Muuten luokan toimintaa on testattu tuntikaupalla sooloistin kehityksen yhteydessä sekä itse sovelluksella touhutessa. Tässä testaamisessa korva on ollut paras työkalu.
