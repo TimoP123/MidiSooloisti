@@ -20,6 +20,12 @@ Päivä | Tunnit | Kuvaus
 15.02.2017 | 4h | Javadoccia ja alustavaa graafiseen käyttöliittymään liittyvää materiaalin tutkimista.
 16.02.2017 | 3h | Sekvenssikaaviot ja viimeiset viikon palautukseen liittyvät säädöt.
 18.02.2017 | 3h | Käyttöliittymän koodausta.
-19.02.2017 | 3h | Käyttöliittymän koodausta.
+19.02.2017 | 5h | Käyttöliittymän koodausta ja koodikatselmointi.
 20.02.2017 | 3h | Käyttöliittymän ja testien viimeistelyä.
+21.02.2017 | 2h | Käyttöliittymän viilausta.
+22.02.2017 | 2h | Javalabran demotilaisuus.
+24.02.2017 | 4h | Pit- ja checkstyletestit sekä rakennekuvaus.
+28.02.2017 | 2h | Jar-tiedoston luonti ja testaus laitoksen koneella.
+04.03.2017 | 2h | Javadocin luominen.
+05.03.2017 | 3h | Testausdokumentti, release ja loppupalautuksen tarkistuslistan läpikäynti.
 ... | ... | ...
